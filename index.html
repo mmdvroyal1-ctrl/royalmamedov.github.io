@@ -208,3 +208,19 @@ document.getElementById("name").innerText = user;
 
 </body>
 </html>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<script>
+firebase.initializeApp({
+  apiKey: "AIzaSyAdERxfMTkvmMsPzzNy69D4q5SSZMn9HjQ",
+  authDomain: "codelab-1414f.firebaseapp.com",
+  projectId: "codelab-1414f"
+});
+
+firebase.auth().onAuthStateChanged(user=>{
+  if(!user){
+    window.location="login.html";
+  }
+});
+</script>
