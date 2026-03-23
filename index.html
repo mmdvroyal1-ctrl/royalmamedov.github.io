@@ -10,7 +10,12 @@
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
 body{
   display:flex;
@@ -19,83 +24,144 @@ body{
   color:white;
 }
 
+/* SIDEBAR */
 .sidebar{
   width:250px;
   padding:20px;
+  backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.05);
+  border-right:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{font-size:22px;color:#22c55e;}
-.sub{font-size:12px;opacity:0.5;margin-bottom:20px;}
-
-.sidebar a{
-  display:block;
-  padding:10px;
-  margin:10px 0;
-  color:white;
-  text-decoration:none;
+/* LOGO */
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#22c55e;
+  margin-bottom:5px;
 }
 
-.content{flex:1;padding:30px;}
-
-.card{
-  background:rgba(255,255,255,0.05);
-  padding:20px;
-  border-radius:15px;
+.sub{
+  font-size:12px;
+  opacity:0.5;
   margin-bottom:20px;
 }
 
+.sidebar a{
+  display:block;
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:rgba(34,197,94,0.2);
+  transform:translateX(5px);
+}
+
+/* CONTENT */
+.content{
+  flex:1;
+  padding:30px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+}
+
+/* BUTTON */
 button{
-  padding:10px;
+  padding:10px 15px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   margin:5px;
   cursor:pointer;
-  background:#22c55e;
+  font-weight:bold;
+}
+
+.logout{
+  background:#ef4444;
   color:white;
 }
 
-.logout{background:red;}
-.glow{color:#22c55e;}
+/* TEXT */
+.glow{
+  color:#22c55e;
+  text-shadow:0 0 10px #22c55e, 0 0 20px #22c55e;
+}
 
 input{
+  width:100%;
   padding:10px;
   border-radius:10px;
   border:none;
+  margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
+
 <div class="logo">💻 CodeLab</div>
 <div class="sub">by Royal Mamedov</div>
 
-<a href="html.html">HTML</a>
-<a href="css.html">CSS</a>
-<a href="js.html">JS</a>
-<a href="cpp.html">C++</a>
-<a href="python.html">Python</a>
-<a href="quiz.html">Quiz</a>
+<a href="html.html">📄 HTML</a>
+<a href="css.html">🎨 CSS</a>
+<a href="js.html">⚡ JavaScript</a>
+<a href="cpp.html">⚙️ C++</a>
+<a href="python.html">🐍 Python</a>
+<a href="runner.html">💻 Runner</a>
+<a href="profile.html">👤 Profil</a>
+<a href="quiz.html">🎓 Quiz</a>
+
 </div>
 
+<!-- CONTENT -->
 <div class="content">
 
 <h1 class="glow">Salam, <span id="name"></span> 👋</h1>
 
 <button class="logout" onclick="logout()">Logout</button>
 
+<!-- WELCOME -->
 <div class="card">
 <h2>🚀 Xoş gəldin</h2>
 <p>Platformaya uğurla daxil oldun</p>
 </div>
 
-<!-- 🤖 AI SECTION -->
+<!-- FEATURES -->
+<div class="card">
+<h2>💡 Nə edə bilərsən?</h2>
+<ul>
+<li>📘 Dərsləri oxu</li>
+<li>💻 Kod yaz və test et</li>
+<li>🎓 Quiz həll et</li>
+<li>👤 Profilini idarə et</li>
+</ul>
+</div>
+
+<!-- 🤖 AI -->
 <div class="card">
 <h2>🤖 AI Köməkçi</h2>
 
-<input id="aiInput" placeholder="Sual ver..." style="width:100%;margin-top:10px;">
+<input id="aiInput" placeholder="Sual ver...">
 <button onclick="askAI()">Soruş</button>
 
 <div id="aiResponse" style="margin-top:10px;"></div>
@@ -131,7 +197,7 @@ function logout(){
   });
 }
 
-// 🤖 FAKE AI (PULSUZ)
+// 🤖 AI
 function askAI(){
   let q = document.getElementById("aiInput").value.toLowerCase();
   let res = document.getElementById("aiResponse");
@@ -149,10 +215,10 @@ function askAI(){
     res.innerText="Python sadə və güclü dildir 🐍";
   }
   else if(q.includes("c++")){
-    res.innerText="C++ sürətli və güclü proqramlaşdırma dilidir ⚙️";
+    res.innerText="C++ sürətli və güclü dildir ⚙️";
   }
   else{
-    res.innerText="Bunu hələ bilmirəm 😅 amma tezliklə öyrənəcəm!";
+    res.innerText="Bunu hələ bilmirəm 😅";
   }
 }
 </script>
