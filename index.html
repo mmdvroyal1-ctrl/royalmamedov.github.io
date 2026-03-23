@@ -4,24 +4,138 @@
 <meta charset="UTF-8">
 <title>Royal Platform</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  display:flex;
+  height:100vh;
+  background:linear-gradient(135deg,#020617,#0f172a,#020617);
+  color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:250px;
+  padding:20px;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);
+  border-right:1px solid rgba(255,255,255,0.1);
+}
+
+/* LOGO */
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#22c55e;
+  margin-bottom:20px;
+  text-shadow:0 0 10px #22c55e, 0 0 20px #22c55e;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 5px #22c55e; }
+  to{ text-shadow:0 0 20px #22c55e; }
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:rgba(34,197,94,0.2);
+  transform:translateX(5px);
+}
+
+/* CONTENT */
+.content{
+  flex:1;
+  padding:30px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+}
+
+/* BUTTON */
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:12px;
+  margin:5px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.logout{
+  background:#ef4444;
+  color:white;
+}
+
+.mode{
+  background:linear-gradient(45deg,#22c55e,#4ade80);
+  color:black;
+}
+
+/* GLOW TEXT */
+.glow{
+  color:#22c55e;
+  text-shadow:0 0 10px #22c55e, 0 0 20px #22c55e;
+}
+
+/* ANIMATION */
+.fade{
+  animation:fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+
 <script>
-// Login yoxdursa loginə at
+// LOGIN CHECK
 if(localStorage.getItem("login")!=="true"){
   window.location="login.html";
 }
 
-// Logout
+// LOGOUT
 function logout(){
   localStorage.removeItem("login");
   window.location="login.html";
 }
 
-// Dark mode toggle
+// DARK MODE
 function toggleMode(){
   let mode = localStorage.getItem("mode");
 
   if(mode==="light"){
-    document.body.style.background="#020617";
+    document.body.style.background="linear-gradient(135deg,#020617,#0f172a,#020617)";
     document.body.style.color="white";
     localStorage.setItem("mode","dark");
   }else{
@@ -31,7 +145,7 @@ function toggleMode(){
   }
 }
 
-// Səhifə açılarkən mode tətbiq et
+// LOAD MODE
 window.onload=function(){
   let mode = localStorage.getItem("mode");
   if(mode==="light"){
@@ -41,68 +155,13 @@ window.onload=function(){
 }
 </script>
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  display:flex;
-  background:#020617;
-  color:white;
-}
-
-.sidebar{
-  width:240px;
-  height:100vh;
-  background:#020617;
-  padding:20px;
-}
-
-.sidebar h2{
-  color:#22c55e;
-}
-
-.sidebar a{
-  display:block;
-  padding:10px;
-  color:white;
-  text-decoration:none;
-  margin:10px 0;
-  border-radius:10px;
-}
-
-.sidebar a:hover{
-  background:#1e293b;
-}
-
-.content{
-  flex:1;
-  padding:20px;
-}
-
-.card{
-  background:#1e293b;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:20px;
-}
-
-button{
-  padding:10px;
-  margin:5px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.logout{background:red;color:white;}
-.mode{background:#22c55e;color:white;}
-</style>
-
 </head>
 <body>
 
-<div class="sidebar">
-<h2>👑 Royal</h2>
+<!-- SIDEBAR -->
+<div class="sidebar fade">
+
+<div class="logo">👑 Royal Mamedov</div>
 
 <a href="html.html">📄 HTML</a>
 <a href="css.html">🎨 CSS</a>
@@ -113,25 +172,31 @@ button{
 
 </div>
 
-<div class="content">
+<!-- CONTENT -->
+<div class="content fade">
 
-<h1>Salam, <span id="name"></span> 👋</h1>
+<h1 class="glow">Salam, <span id="name"></span> 👋</h1>
 
 <button class="logout" onclick="logout()">Logout</button>
 <button class="mode" onclick="toggleMode()">🌙 Mode</button>
 
 <div class="card">
-Platformaya xoş gəldin!
+<h2>🚀 Platformaya xoş gəldin</h2>
+<p>
+Bu platformada sən HTML, CSS və JavaScript öyrənə bilərsən.
+</p>
 </div>
 
 <div class="card">
-Bu platformada HTML, CSS və JavaScript öyrənə bilərsən.
+<h2>💡 Nə edə bilərsən?</h2>
+<p>
+Kod yaz, quiz həll et və developer kimi inkişaf et.
+</p>
 </div>
 
 </div>
 
 <script>
-// User adını göstər
 let user = localStorage.getItem("user") || "Qonaq";
 document.getElementById("name").innerText = user;
 </script>
