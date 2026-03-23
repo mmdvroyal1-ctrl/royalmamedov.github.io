@@ -5,17 +5,42 @@
 <title>JavaScript Tam Dərs</title>
 
 <style>
-body{background:#020617;color:white;font-family:Arial;padding:20px;line-height:1.7;}
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+  line-height:1.7;
+}
 h1,h2{color:#22c55e;}
-.card{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px;}
-pre{background:black;color:lime;padding:10px;border-radius:10px;}
-button{padding:10px;background:#22c55e;border:none;color:white;border-radius:10px;}
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+pre{
+  background:black;
+  color:lime;
+  padding:10px;
+  border-radius:10px;
+}
+button{
+  padding:10px;
+  background:#22c55e;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
 </style>
 
 </head>
 <body>
 
 <h1>⚡ JavaScript Tam Bələdçi</h1>
+
+<h2>Salam, <span id="name"></span> 👋</h2>
 
 <div class="card">
 <h2>JavaScript nədir?</h2>
@@ -49,14 +74,15 @@ let ad = "Royal";
 <h2>🔧 Funksiya</h2>
 <pre>
 function salam(){
-  alert("Salam");
+  let user = localStorage.getItem("user");
+  alert("Salam " + user);
 }
 </pre>
 </div>
 
 <div class="card">
 <h2>🎯 Test</h2>
-<button onclick="alert('Salam Royal 👑')">Kliklə</button>
+<button onclick="salam()">Kliklə</button>
 </div>
 
 <div class="card">
@@ -69,6 +95,18 @@ function salam(){
 </div>
 
 <a href="index.html">⬅ Geri</a>
+
+<script>
+// USER ADINI YUXARIDA GÖSTƏRİR
+let user = localStorage.getItem("user") || "Qonaq";
+document.getElementById("name").innerText = user;
+
+// BUTTON FUNKSİYA
+function salam(){
+  let user = localStorage.getItem("user") || "Qonaq";
+  alert("Salam " + user + " 👑");
+}
+</script>
 
 </body>
 </html>
