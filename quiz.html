@@ -6,7 +6,7 @@
 
 <style>
 body{
-  background:linear-gradient(135deg,#020617,#0f172a);
+  background:#020617;
   color:white;
   font-family:Arial;
   text-align:center;
@@ -15,7 +15,6 @@ body{
 
 h1{
   color:#22c55e;
-  text-shadow:0 0 20px #22c55e;
 }
 
 .btn{
@@ -25,7 +24,6 @@ h1{
   border-radius:12px;
   background:white;
   color:black;
-  font-weight:bold;
   cursor:pointer;
 }
 
@@ -37,15 +35,9 @@ h1{
   text-align:left;
 }
 
-/* 🔥 FIX */
 label{
   display:block;
-  padding:8px;
-  cursor:pointer;
-}
-
-input{
-  margin-right:10px;
+  padding:5px;
   cursor:pointer;
 }
 
@@ -56,12 +48,6 @@ button{
   border-radius:10px;
   color:white;
   margin-top:10px;
-}
-
-a{
-  color:white;
-  display:block;
-  margin-top:20px;
 }
 </style>
 </head>
@@ -79,51 +65,100 @@ a{
 
 <div id="quiz"></div>
 
-<a href="index.html">⬅ Geri</a>
-
 <script>
 
 let suallar = {
-html:[{q:"HTML nədir?",a:["Markup dili","Proqram dili"],d:0}],
-css:[{q:"CSS nədir?",a:["Stil dili","Proqram dili"],d:0}],
-js:[{q:"JS nədir?",a:["Proqram dili","Stil"],d:0}],
-cpp:[{q:"C++ nədir?",a:["Proqram dili","HTML"],d:0}],
-python:[{q:"Python nədir?",a:["Proqram dili","HTML"],d:0}]
+
+html:[
+{q:"HTML nədir?",a:["Markup dili","Proqram dili"],d:0},
+{q:"<h1> nədir?",a:["Başlıq","Şəkil"],d:0}
+],
+
+css:[
+{q:"CSS nədir?",a:["Stil dili","Proqram dili"],d:0},
+{q:"color nə edir?",a:["Rəng","Şəkil"],d:0}
+],
+
+js:[
+{q:"JS nədir?",a:["Proqram dili","Stil"],d:0},
+{q:"alert nə edir?",a:["Mesaj","Silir"],d:0}
+],
+
+cpp:[
+{q:"C++ nədir?",a:["Proqram dili","HTML"],d:0},
+{q:"cout nə edir?",a:["Çap","Silir"],d:0}
+],
+
+python:[
+{q:"Python nədir?",a:["Proqram dili","HTML"],d:0},
+{q:"print nə edir?",a:["Çap","Silir"],d:0}
+]
+
 };
 
 function basla(fenn){
-  let html="";
 
-  suallar[fenn].forEach(function(s,i){
-    html += '<div class="card">';
-    html += '<h3>'+(i+1)+'. '+s.q+'</h3>';
+  let container = document.getElementById("quiz");
+  container.innerHTML = "";
 
-    s.a.forEach(function(c,j){
-      html += '<label>';
-      html += '<input type="radio" name="s'+i+'" value="'+j+'"> '+c;
-      html += '</label>';
-    });
+  let data = suallar[fenn];
 
-    html += '</div>';
-  });
+  for(let i=0;i<data.length;i++){
 
-  html += '<button onclick="yoxla(\''+fenn+'\')">Yoxla</button>';
-  html += '<h2 id="netice"></h2>';
+    let s = data[i];
 
-  document.getElementById("quiz").innerHTML = html;
+    let div = document.createElement("div");
+    div.className="card";
+
+    let q = document.createElement("h3");
+    q.innerText = (i+1)+". "+s.q;
+
+    div.appendChild(q);
+
+    for(let j=0;j<s.a.length;j++){
+      let label = document.createElement("label");
+
+      let input = document.createElement("input");
+      input.type="radio";
+      input.name="s"+i;
+      input.value=j;
+
+      label.appendChild(input);
+      label.append(" "+s.a[j]);
+
+      div.appendChild(label);
+    }
+
+    container.appendChild(div);
+  }
+
+  let btn = document.createElement("button");
+  btn.innerText="Yoxla";
+  btn.onclick=function(){ yoxla(fenn); };
+
+  container.appendChild(btn);
+
+  let result = document.createElement("h2");
+  result.id="netice";
+
+  container.appendChild(result);
 }
 
 function yoxla(fenn){
-  let bal=0;
 
-  suallar[fenn].forEach(function(s,i){
+  let bal=0;
+  let data = suallar[fenn];
+
+  for(let i=0;i<data.length;i++){
+
     let sec = document.querySelector('input[name="s'+i+'"]:checked');
-    if(sec && sec.value == s.d){
+
+    if(sec && sec.value == data[i].d){
       bal++;
     }
-  });
+  }
 
-  document.getElementById("netice").innerText = "Bal: "+bal;
+  document.getElementById("netice").innerText="Bal: "+bal;
 }
 
 </script>
