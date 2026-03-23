@@ -2,88 +2,170 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>HTML Tam Dərs</title>
+<title>HTML Kitab - CodeLab</title>
 
 <style>
-body{background:#020617;color:white;font-family:Arial;padding:20px;line-height:1.7;}
-h1,h2{color:#22c55e;}
-.card{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px;}
-pre{background:black;color:lime;padding:10px;border-radius:10px;overflow:auto;}
-a{color:#22c55e;}
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+  line-height:1.8;
+}
+h1,h2{
+  color:#22c55e;
+}
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+pre{
+  background:black;
+  color:lime;
+  padding:15px;
+  border-radius:10px;
+  overflow:auto;
+}
 </style>
-
 </head>
 <body>
 
-<h1>📄 HTML Tam Bələdçi</h1>
+<h1>📘 HTML TAM PRO KİTAB</h1>
 
 <div class="card">
-<h2>HTML nədir?</h2>
+<h2>📜 HTML nədir?</h2>
 <p>
-HTML (HyperText Markup Language) veb səhifələrin əsasını təşkil edən dildir.
-İnternetdə gördüyün bütün saytların strukturu HTML ilə qurulur.
+HTML (HyperText Markup Language) veb saytların strukturunu qurmaq üçün istifadə olunan əsas dildir.
+HTML olmadan heç bir sayt mövcud ola bilməz.
 </p>
 </div>
 
 <div class="card">
 <h2>👨‍💻 Kim yaradıb?</h2>
 <p>
-HTML 1991-ci ildə <strong>Tim Berners-Lee</strong> tərəfindən yaradılmışdır.
+HTML 1991-ci ildə Tim Berners-Lee tərəfindən yaradılmışdır.
 </p>
 </div>
 
 <div class="card">
-<h2>🎯 Niyə yaradılıb?</h2>
+<h2>🎯 Məqsədi</h2>
 <p>
-İnternetdə məlumatların paylaşılması və strukturlaşdırılması üçün yaradılmışdır.
-HTML olmadan sayt sadəcə mətn olardı.
+İnternetdə məlumat paylaşmaq və səhifələri strukturlaşdırmaq.
 </p>
 </div>
 
 <div class="card">
-<h2>🧱 HTML strukturu</h2>
+<h2>🧱 HTML əsas struktur</h2>
 <pre>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Başlıq&lt;/title&gt;
+&lt;title&gt;Sayt&lt;/title&gt;
 &lt;/head&gt;
+
 &lt;body&gt;
-
 &lt;h1&gt;Salam&lt;/h1&gt;
-
 &lt;/body&gt;
+
 &lt;/html&gt;
 </pre>
 </div>
 
 <div class="card">
-<h2>🏷️ Əsas taglar</h2>
-<ul>
-<li>&lt;h1&gt; - Başlıq</li>
-<li>&lt;p&gt; - Mətn</li>
-<li>&lt;a&gt; - Link</li>
-<li>&lt;img&gt; - Şəkil</li>
-<li>&lt;div&gt; - Blok</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>💻 Real nümunə</h2>
+<h2>📦 Əsas taglar</h2>
 <pre>
-&lt;h1&gt;Mənim saytım&lt;/h1&gt;
-&lt;p&gt;Bu mənim ilk səhifəmdir&lt;/p&gt;
-&lt;a href="#"&gt;Kliklə&lt;/a&gt;
+&lt;h1&gt;Başlıq&lt;/h1&gt;
+&lt;p&gt;Paraqraf&lt;/p&gt;
+&lt;a href="#"&gt;Link&lt;/a&gt;
+&lt;img src="img.jpg"&gt;
 </pre>
 </div>
 
 <div class="card">
-<h2>🚀 HTML ilə nə edə bilərsən?</h2>
+<h2>📝 Formlar</h2>
+<pre>
+&lt;form&gt;
+&lt;input type="text" placeholder="Ad"&gt;
+&lt;input type="password"&gt;
+&lt;button&gt;Göndər&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>📋 Siyahılar</h2>
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Item 1&lt;/li&gt;
+&lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>📊 Cədvəllər</h2>
+<pre>
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;Ad&lt;/th&gt;
+&lt;th&gt;Yaş&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Royal&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>🎥 Media</h2>
+<pre>
+&lt;img src="img.jpg"&gt;
+
+&lt;video controls&gt;
+&lt;source src="video.mp4"&gt;
+&lt;/video&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>🧠 Semantic HTML</h2>
+<pre>
+&lt;header&gt;&lt;/header&gt;
+&lt;nav&gt;&lt;/nav&gt;
+&lt;main&gt;&lt;/main&gt;
+&lt;section&gt;&lt;/section&gt;
+&lt;footer&gt;&lt;/footer&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>🚀 Real layihə nümunə</h2>
+<pre>
+&lt;header&gt;
+&lt;h1&gt;CodeLab&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;section&gt;
+&lt;p&gt;Öyrən və inkişaf et&lt;/p&gt;
+&lt;/section&gt;
+</pre>
+</div>
+
+<div class="card">
+<h2>💡 Məsləhətlər</h2>
 <ul>
-<li>Web saytlar</li>
-<li>Bloglar</li>
-<li>Landing page</li>
-<li>App strukturu</li>
+<li>Həmişə semantic tag istifadə et</li>
+<li>Sadə yaz</li>
+<li>Strukturu düzgün qur</li>
 </ul>
 </div>
 
