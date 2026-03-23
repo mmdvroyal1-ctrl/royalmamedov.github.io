@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Login</title>
 
-<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
@@ -44,17 +43,6 @@ button{
   color:white;
   margin-top:10px;
   width:100%;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-button:hover{
-  background:#16a34a;
-}
-
-#msg{
-  margin-top:10px;
-  font-size:14px;
 }
 </style>
 </head>
@@ -74,53 +62,31 @@ button:hover{
 
 <script>
 
-// 🔥 SƏNİN FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyAdERxfMTkvmMsPzzNy69D4q5SSZMn9HjQ",
   authDomain: "codelab-1414f.firebaseapp.com",
-  projectId: "codelab-1414f",
-  storageBucket: "codelab-1414f.firebasestorage.app",
-  messagingSenderId: "842056693862",
-  appId: "1:842056693862:web:52f692bbe29516331195a7",
-  measurementId: "G-817PM4749Y"
+  projectId: "codelab-1414f"
 };
 
-// INIT
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-
-// REGISTER
 function register(){
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
 
   auth.createUserWithEmailAndPassword(email,pass)
-  .then(()=>{
-    document.getElementById("msg").innerText="Qeydiyyat uğurlu ✅";
-  })
-  .catch(e=>{
-    document.getElementById("msg").innerText=e.message;
-  });
+  .then(()=>{document.getElementById("msg").innerText="Qeydiyyat OK";})
+  .catch(e=>{document.getElementById("msg").innerText=e.message;});
 }
 
-
-// LOGIN (FIX OLUNMUŞ)
 function login(){
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
 
   auth.signInWithEmailAndPassword(email,pass)
   .then(()=>{
-    document.getElementById("msg").innerText="Giriş uğurlu 🚀";
-
-    // 🔥 USER HAZIR OLANDA KEÇİR
-    auth.onAuthStateChanged(user=>{
-      if(user){
-        window.location.href="index.html";
-      }
-    });
-
+    window.location.href="index.html";
   })
   .catch(e=>{
     document.getElementById("msg").innerText=e.message;
