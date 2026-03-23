@@ -27,17 +27,8 @@ body{
   border-right:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{
-  font-size:22px;
-  font-weight:700;
-  color:#22c55e;
-}
-
-.sub{
-  font-size:12px;
-  opacity:0.5;
-  margin-bottom:20px;
-}
+.logo{font-size:22px;font-weight:700;color:#22c55e;}
+.sub{font-size:12px;opacity:0.5;margin-bottom:20px;}
 
 .sidebar a{
   display:block;
@@ -46,19 +37,19 @@ body{
   border-radius:12px;
   text-decoration:none;
   color:white;
+  transition:0.3s;
 }
 
 .sidebar a:hover{
   background:rgba(34,197,94,0.2);
+  transform:translateX(5px);
 }
 
-.content{
-  flex:1;
-  padding:30px;
-}
+.content{flex:1;padding:30px;}
 
 .card{
   background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
   padding:20px;
   border-radius:20px;
   margin-bottom:20px;
@@ -69,13 +60,19 @@ button{
   border:none;
   border-radius:10px;
   cursor:pointer;
+  font-weight:bold;
   background:#22c55e;
 }
 
 .logout{background:#ef4444;}
 
+.glow{
+  color:#22c55e;
+  text-shadow:0 0 10px #22c55e;
+}
+
 .chat{
-  height:250px;
+  height:260px;
   overflow:auto;
   background:rgba(0,0,0,0.3);
   padding:10px;
@@ -92,6 +89,15 @@ input{
   border-radius:10px;
   border:none;
 }
+
+/* RUNNER */
+iframe{
+  width:100%;
+  height:200px;
+  background:white;
+  border-radius:10px;
+  margin-top:10px;
+}
 </style>
 </head>
 
@@ -101,19 +107,19 @@ input{
 <div class="logo">💻 CodeLab</div>
 <div class="sub">by Royal Mamedov</div>
 
-<a href="html.html">HTML</a>
-<a href="css.html">CSS</a>
-<a href="js.html">JS</a>
-<a href="cpp.html">C++</a>
-<a href="python.html">Python</a>
-<a href="runner.html">Runner</a>
-<a href="profile.html">Profil</a>
-<a href="quiz.html">Quiz</a>
+<a href="html.html">📄 HTML</a>
+<a href="css.html">🎨 CSS</a>
+<a href="js.html">⚡ JavaScript</a>
+<a href="cpp.html">⚙️ C++</a>
+<a href="python.html">🐍 Python</a>
+<a href="runner.html">💻 Runner</a>
+<a href="profile.html">👤 Profil</a>
+<a href="quiz.html">🎓 Quiz</a>
 </div>
 
 <div class="content">
 
-<h1>Salam, <span id="name"></span> 👋</h1>
+<h1 class="glow">Salam, <span id="name"></span> 👋</h1>
 <button class="logout" onclick="logout()">Logout</button>
 
 <div class="card">
@@ -122,12 +128,14 @@ input{
 </div>
 
 <div class="card">
-<h2>🤖 AI Köməkçi</h2>
+<h2>🤖 CodeLab PRO AI</h2>
 
 <div id="chat" class="chat"></div>
 
 <input id="aiInput" placeholder="Sual ver...">
 <button onclick="askAI()">Göndər</button>
+
+<iframe id="output"></iframe>
 
 </div>
 
@@ -143,14 +151,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-let username = "";
+let username="";
+let memory=JSON.parse(localStorage.getItem("chatMemory"))||[];
 
-// LOGIN CHECK
+// LOGIN
 setTimeout(()=>{
-  let user = auth.currentUser;
+  let user=auth.currentUser;
   if(user){
-    username = user.email;
-    document.getElementById("name").innerText = username;
+    username=user.email;
+    document.getElementById("name").innerText=username;
   }else{
     window.location="login.html";
   }
@@ -158,81 +167,103 @@ setTimeout(()=>{
 
 // LOGOUT
 function logout(){
-  auth.signOut().then(()=> window.location="login.html");
+  auth.signOut().then(()=>window.location="login.html");
 }
 
-// ENTER basanda göndər
-document.getElementById("aiInput").addEventListener("keypress",function(e){
+// ENTER
+document.getElementById("aiInput").addEventListener("keypress",e=>{
   if(e.key==="Enter") askAI();
 });
 
+// LOAD CHAT
+window.onload=()=>{
+  let chat=document.getElementById("chat");
+  memory.forEach(m=>chat.innerHTML+=m);
+};
+
+// RUN CODE
+function runCode(code){
+  document.getElementById("output").srcdoc=code;
+}
+
 // AI
 function askAI(){
-  let input = document.getElementById("aiInput");
-  let chat = document.getElementById("chat");
-  let msg = input.value.trim().toLowerCase();
+  let input=document.getElementById("aiInput");
+  let chat=document.getElementById("chat");
 
+  let msg=input.value.trim();
   if(msg==="") return;
 
-  chat.innerHTML += `<div class="user">🧑: ${msg}</div>`;
+  let lower=msg.toLowerCase();
 
-  let reply = "";
+  let userMsg=`<div class="user">🧑: ${msg}</div>`;
+  chat.innerHTML+=userMsg;
+  memory.push(userMsg);
+
+  let reply="";
+  let code="";
 
   // CHAT
-  if(msg.includes("salam") || msg.includes("hello") || msg.includes("hi")){
-    reply = "Salam " + username + " 👋 Necəsən?";
-  }
-  else if(msg.includes("necəsən")){
-    reply = "Yaxşıyam 😎 sən necəsən?";
-  }
-  else if(msg.includes("kimsen")){
-    reply = "Mən CodeLab AI-yam 🤖 sənə proqramlaşdırmada kömək edirəm";
+  if(/salam|hello|hi/.test(lower)){
+    reply="Salam "+username+" 👋 Necəsən?";
   }
 
-  // SAYT
-  else if(msg.includes("codelab")){
-    reply = "CodeLab proqramlaşdırma öyrənmə platformasıdır 💻";
-  }
-  else if(msg.includes("quiz")){
-    reply = "Quiz bölməsində testlər var 🎓";
-  }
-  else if(msg.includes("runner")){
-    reply = "Runner kod yazmaq üçündür 💻";
+  else if(lower.includes("necəsən")){
+    reply="Əlayam 😎 sən necəsən?";
   }
 
-  // HTML
-  else if(msg.includes("html")){
-    reply = "HTML saytın skeletidir. Məsələn:\n<h1>Salam</h1>";
+  // CODE GENERATION
+  else if(lower.includes("button")){
+    code="<button style='padding:10px;background:green;color:white'>Klik</button>";
+    reply="Button hazırdır 👇";
   }
 
-  // CSS
-  else if(msg.includes("css")){
-    reply = "CSS dizayn üçündür.\nbody { color:red; }";
+  else if(lower.includes("input")){
+    code="<input placeholder='Yaz...' style='padding:10px'>";
+    reply="Input hazırdır 👇";
   }
 
-  // JS
-  else if(msg.includes("javascript") || msg.includes("js")){
-    reply = "JavaScript interaktivlik yaradır.\nalert('Salam')";
+  else if(lower.includes("sayt qur")){
+    code="<h1 style='color:red'>Salam Dünya</h1>";
+    reply="Mini sayt quruldu 👇";
   }
 
-  // PYTHON
-  else if(msg.includes("python")){
-    reply = "Python sadə dildir:\nprint('Salam')";
+  else if(lower.includes("html")){
+    code="<h2>HTML işləyir</h2>";
+    reply="HTML nümunə 👇";
   }
 
-  // C++
-  else if(msg.includes("c++")){
-    reply = "C++ sürətli dildir:\ncout << 'Salam';";
+  else if(lower.includes("css")){
+    code="<h1 style='color:blue'>CSS işləyir</h1>";
+    reply="CSS tətbiq edildi 👇";
   }
 
-  // DEFAULT
+  // DEBUG
+  else if(lower.includes("səhv")){
+    reply="Kodu göndər, analiz edib düzəldim 🔧";
+  }
+
+  // MEMORY
+  else if(lower.includes("ne demişdim")){
+    reply=memory.length>2?memory[memory.length-2]:"Yadda heç nə yoxdur";
+  }
+
   else{
-    reply = "Başa düşmədim 🤔 başqa cür yaz";
+    reply="Daha konkret yaz 👍 məsələn: 'button yarat'";
   }
+
+  let botMsg=`<div class="bot">🤖: ${reply}</div>`;
 
   setTimeout(()=>{
-    chat.innerHTML += `<div class="bot">🤖: ${reply}</div>`;
-    chat.scrollTop = chat.scrollHeight;
+    chat.innerHTML+=botMsg;
+    memory.push(botMsg);
+
+    if(code){
+      runCode(code);
+    }
+
+    localStorage.setItem("chatMemory",JSON.stringify(memory));
+    chat.scrollTop=chat.scrollHeight;
   },300);
 
   input.value="";
