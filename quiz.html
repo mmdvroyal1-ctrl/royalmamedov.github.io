@@ -2,49 +2,145 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>Quiz</title>
+<title>Quiz System</title>
 
 <style>
 body{
   background:#020617;
   color:white;
   font-family:Arial;
+  text-align:center;
   padding:20px;
 }
+
+.box{
+  background:#1e293b;
+  padding:20px;
+  border-radius:20px;
+  max-width:500px;
+  margin:auto;
+}
+
 button{
+  display:block;
+  width:100%;
   padding:10px;
-  margin:5px;
+  margin:8px 0;
   background:#22c55e;
   border:none;
   color:white;
   border-radius:10px;
   cursor:pointer;
 }
+
+.menu button{
+  width:auto;
+  display:inline-block;
+  margin:5px;
+}
 </style>
 
 </head>
 <body>
 
-<h1>🎓 Quiz</h1>
+<h1>🎓 Quiz Seç</h1>
 
-<h3>HTML nədir?</h3>
+<div class="menu">
+<button onclick="startQuiz('html')">📄 HTML</button>
+<button onclick="startQuiz('css')">🎨 CSS</button>
+<button onclick="startQuiz('js')">⚡ JavaScript</button>
+</div>
 
-<button onclick="checkAnswer(1)">Program dili</button>
-<button onclick="checkAnswer(2)">Markup dili</button>
+<br>
 
-<p id="result"></p>
+<div class="box" id="quizBox" style="display:none;">
+<h3 id="question"></h3>
+
+<button onclick="answer(0)" id="a0"></button>
+<button onclick="answer(1)" id="a1"></button>
+<button onclick="answer(2)" id="a2"></button>
+
+<p id="score"></p>
+</div>
 
 <br>
 <a href="index.html">⬅ Geri</a>
 
 <script>
-function checkAnswer(answer){
-  let result = document.getElementById("result");
+let quizzes = {
 
-  if(answer === 2){
-    result.innerText = "Doğru ✅";
+html: [
+{q:"HTML nədir?",a:["Dil","Markup dili","Oyun"],c:1},
+{q:"HTML nə ilə başlayır?",a:["<html>","<start>","<body>"],c:0},
+{q:"Başlıq tagı?",a:["<p>","<h1>","<div>"],c:1},
+{q:"Link tagı?",a:["<a>","<link>","<url>"],c:0},
+{q:"Şəkil tagı?",a:["<img>","<pic>","<src>"],c:0},
+{q:"Paragraph?",a:["<p>","<h>","<text>"],c:0},
+{q:"Body nədir?",a:["struktur","görünüş","məzmun"],c:2},
+{q:"HTML dili?",a:["proqram","markup","server"],c:1},
+{q:"Div nədir?",a:["blok","link","img"],c:0},
+{q:"HTML kim yaradıb?",a:["Bill Gates","Tim","Elon"],c:1}
+],
+
+css: [
+{q:"CSS nədir?",a:["Dil","Stil","Server"],c:1},
+{q:"Rəng vermək?",a:["color","font","style"],c:0},
+{q:"Fon rəngi?",a:["bg","background","color"],c:1},
+{q:"Flex nədir?",a:["layout","rəng","font"],c:0},
+{q:"Hover?",a:["klik","üzərinə gəlmək","scroll"],c:1},
+{q:"Padding?",a:["boşluq","rəng","ölçü"],c:0},
+{q:"Margin?",a:["çöl boşluq","daxili","rəng"],c:0},
+{q:"Font?",a:["yazı","div","link"],c:0},
+{q:"Border?",a:["çərçivə","fon","text"],c:0},
+{q:"CSS kim yaradıb?",a:["Hakon","Tim","Elon"],c:0}
+],
+
+js: [
+{q:"JS nədir?",a:["Dil","Oyun","Şəkil"],c:0},
+{q:"Alert nə edir?",a:["çıxarır","silir","yazır"],c:0},
+{q:"Dəyişən?",a:["let","div","h1"],c:0},
+{q:"Funksiya?",a:["function","var","id"],c:0},
+{q:"Klik hadisə?",a:["onclick","onhover","onmove"],c:0},
+{q:"Console?",a:["çıxış","sil","giriş"],c:0},
+{q:"JS dili?",a:["interaktiv","statik","server"],c:0},
+{q:"Event?",a:["hadisə","rəng","font"],c:0},
+{q:"DOM?",a:["struktur","dil","server"],c:0},
+{q:"JS kim yaradıb?",a:["Brendan","Tim","Bill"],c:0}
+]
+
+};
+
+let current = 0;
+let score = 0;
+let currentQuiz = [];
+
+function startQuiz(type){
+  currentQuiz = quizzes[type];
+  current = 0;
+  score = 0;
+  document.getElementById("quizBox").style.display="block";
+  load();
+}
+
+function load(){
+  document.getElementById("question").innerText = currentQuiz[current].q;
+  document.getElementById("a0").innerText = currentQuiz[current].a[0];
+  document.getElementById("a1").innerText = currentQuiz[current].a[1];
+  document.getElementById("a2").innerText = currentQuiz[current].a[2];
+}
+
+function answer(i){
+  if(i === currentQuiz[current].c){
+    score++;
+  }
+
+  current++;
+
+  if(current < currentQuiz.length){
+    load();
   }else{
-    result.innerText = "Yanlış ❌";
+    document.getElementById("quizBox").innerHTML =
+    "<h2>Bitdi 🎉</h2><p>Balın: "+score+"/10</p>";
   }
 }
 </script>
