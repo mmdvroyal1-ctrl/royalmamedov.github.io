@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz</title>
+
+<style>
+body{background:#020617;color:white;font-family:Arial;padding:20px;}
+button{padding:10px;margin:5px;background:#22c55e;border:none;color:white;border-radius:10px;}
+</style>
+
+</head>
+<body>
+
+<h1>🎓 Quiz</h1>
+
+<h3>HTML nədir?</h3>
+
+<button onclick="check(1)">Program dili</button>
+<button onclick="check(2)">Markup dili</button>
+
+<p id="result"></p>
+
+<script>
+function check(ans){
+  if(ans==2){
+    document.getElementById("result").innerText="Doğru ✅";
+  }else{
+    document.getElementById("result").innerText="Yanlış ❌";
+  }
+}
+</script>
+
+</body>
+</html>
