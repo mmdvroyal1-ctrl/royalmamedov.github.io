@@ -2,146 +2,187 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>Quiz System</title>
+<title>Quiz Seç</title>
 
 <style>
 body{
-  background:#020617;
+  background:linear-gradient(135deg,#020617,#0f172a);
   color:white;
   font-family:Arial;
   text-align:center;
-  padding:20px;
+  padding:40px;
 }
 
-.box{
+h1{
+  color:#22c55e;
+  text-shadow:0 0 20px #22c55e;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 25px;
+  margin:10px;
+  border-radius:12px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  background:#22c55e;
+  color:white;
+}
+
+.card{
   background:#1e293b;
   padding:20px;
-  border-radius:20px;
-  max-width:500px;
-  margin:auto;
+  border-radius:15px;
+  margin-top:15px;
+  text-align:left;
 }
 
 button{
-  display:block;
-  width:100%;
   padding:10px;
-  margin:8px 0;
   background:#22c55e;
   border:none;
-  color:white;
   border-radius:10px;
-  cursor:pointer;
+  color:white;
 }
 
-.menu button{
-  width:auto;
-  display:inline-block;
-  margin:5px;
+a{
+  color:white;
+  display:block;
+  margin-top:20px;
 }
 </style>
-
 </head>
 <body>
 
 <h1>🎓 Quiz Seç</h1>
 
-<div class="menu">
-<button onclick="startQuiz('html')">📄 HTML</button>
-<button onclick="startQuiz('css')">🎨 CSS</button>
-<button onclick="startQuiz('js')">⚡ JavaScript</button>
+<div id="menu">
+  <div class="btn" onclick="basla('html')">HTML</div>
+  <div class="btn" onclick="basla('css')">CSS</div>
+  <div class="btn" onclick="basla('js')">JS</div>
+  <div class="btn" onclick="basla('cpp')">C++</div>
+  <div class="btn" onclick="basla('python')">Python</div>
 </div>
 
-<br>
+<div id="quiz"></div>
 
-<div class="box" id="quizBox" style="display:none;">
-<h3 id="question"></h3>
-
-<button onclick="answer(0)" id="a0"></button>
-<button onclick="answer(1)" id="a1"></button>
-<button onclick="answer(2)" id="a2"></button>
-
-<p id="score"></p>
-</div>
-
-<br>
 <a href="index.html">⬅ Geri</a>
 
 <script>
-let quizzes = {
+let suallar = {
 
-html: [
-{q:"HTML nədir?",a:["Dil","Markup dili","Oyun"],c:1},
-{q:"HTML nə ilə başlayır?",a:["<html>","<start>","<body>"],c:0},
-{q:"Başlıq tagı?",a:["<p>","<h1>","<div>"],c:1},
-{q:"Link tagı?",a:["<a>","<link>","<url>"],c:0},
-{q:"Şəkil tagı?",a:["<img>","<pic>","<src>"],c:0},
-{q:"Paragraph?",a:["<p>","<h>","<text>"],c:0},
-{q:"Body nədir?",a:["struktur","görünüş","məzmun"],c:2},
-{q:"HTML dili?",a:["proqram","markup","server"],c:1},
-{q:"Div nədir?",a:["blok","link","img"],c:0},
-{q:"HTML kim yaradıb?",a:["Bill Gates","Tim","Elon"],c:1}
+/* HTML */
+html:[
+{q:"HTML nədir?",a:["Markup dili","Proqram dili"],d:0},
+{q:"<h1> nədir?",a:["Başlıq","Paraqraf"],d:0},
+{q:"<p> nədir?",a:["Paraqraf","Şəkil"],d:0},
+{q:"<a> nə edir?",a:["Link","Rəng"],d:0},
+{q:"<img> nədir?",a:["Şəkil","Link"],d:0},
+{q:"<ul> nədir?",a:["Siyahı","Şəkil"],d:0},
+{q:"<li> nədir?",a:["Element","CSS"],d:0},
+{q:"<title> nədir?",a:["Başlıq","Kod"],d:0},
+{q:"HTML harada işləyir?",a:["Brauzer","Server"],d:0},
+{q:"<br> nədir?",a:["Yeni sətir","Şəkil"],d:0}
 ],
 
-css: [
-{q:"CSS nədir?",a:["Dil","Stil","Server"],c:1},
-{q:"Rəng vermək?",a:["color","font","style"],c:0},
-{q:"Fon rəngi?",a:["bg","background","color"],c:1},
-{q:"Flex nədir?",a:["layout","rəng","font"],c:0},
-{q:"Hover?",a:["klik","üzərinə gəlmək","scroll"],c:1},
-{q:"Padding?",a:["boşluq","rəng","ölçü"],c:0},
-{q:"Margin?",a:["çöl boşluq","daxili","rəng"],c:0},
-{q:"Font?",a:["yazı","div","link"],c:0},
-{q:"Border?",a:["çərçivə","fon","text"],c:0},
-{q:"CSS kim yaradıb?",a:["Hakon","Tim","Elon"],c:0}
+/* CSS */
+css:[
+{q:"CSS nədir?",a:["Stil dili","Proqram dili"],d:0},
+{q:"color nə edir?",a:["Rəng","Ölçü"],d:0},
+{q:"background nədir?",a:["Fon","Mətn"],d:0},
+{q:"font-size nədir?",a:["Yazı ölçüsü","Rəng"],d:0},
+{q:"margin nədir?",a:["Boşluq","Rəng"],d:0},
+{q:"padding nədir?",a:["Daxili boşluq","Kənar"],d:0},
+{q:"display nədir?",a:["Görünüş","Rəng"],d:0},
+{q:"flex nədir?",a:["Layout","Rəng"],d:0},
+{q:"border nədir?",a:["Çərçivə","Şrift"],d:0},
+{q:"hover nədir?",a:["Mouse effekt","Click"],d:0}
 ],
 
-js: [
-{q:"JS nədir?",a:["Dil","Oyun","Şəkil"],c:0},
-{q:"Alert nə edir?",a:["çıxarır","silir","yazır"],c:0},
-{q:"Dəyişən?",a:["let","div","h1"],c:0},
-{q:"Funksiya?",a:["function","var","id"],c:0},
-{q:"Klik hadisə?",a:["onclick","onhover","onmove"],c:0},
-{q:"Console?",a:["çıxış","sil","giriş"],c:0},
-{q:"JS dili?",a:["interaktiv","statik","server"],c:0},
-{q:"Event?",a:["hadisə","rəng","font"],c:0},
-{q:"DOM?",a:["struktur","dil","server"],c:0},
-{q:"JS kim yaradıb?",a:["Brendan","Tim","Bill"],c:0}
+/* JS */
+js:[
+{q:"JS nədir?",a:["Proqram dili","Stil"],d:0},
+{q:"alert nə edir?",a:["Mesaj göstərir","Silir"],d:0},
+{q:"let nədir?",a:["Dəyişən","Funksiya"],d:0},
+{q:"function nədir?",a:["Funksiya","Loop"],d:0},
+{q:"if nə edir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Şərt"],d:0},
+{q:"console.log nədir?",a:["Yazır","Silir"],d:0},
+{q:"onclick nədir?",a:["Klik hadisə","Rəng"],d:0},
+{q:"array nədir?",a:["Massiv","String"],d:0},
+{q:"=== nədir?",a:["Tam bərabər","Toplama"],d:0}
+],
+
+/* C++ */
+cpp:[
+{q:"C++ nədir?",a:["Proqram dili","HTML"],d:0},
+{q:"cout nədir?",a:["Output","Input"],d:0},
+{q:"cin nədir?",a:["Input","Output"],d:0},
+{q:"int nədir?",a:["Rəqəm","String"],d:0},
+{q:"main nədir?",a:["Baş funksiya","Loop"],d:0},
+{q:"if nə edir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Print"],d:0},
+{q:"return 0 nədir?",a:["Bitir","Loop"],d:0},
+{q:"#include nədir?",a:["Kitabxana","Loop"],d:0},
+{q:"string nədir?",a:["Mətn","Rəqəm"],d:0}
+],
+
+/* PYTHON */
+python:[
+{q:"Python nədir?",a:["Proqram dili","HTML"],d:0},
+{q:"print nə edir?",a:["Çap","Silir"],d:0},
+{q:"if nədir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Funksiya"],d:0},
+{q:"def nədir?",a:["Funksiya","Dəyişən"],d:0},
+{q:"list nədir?",a:["Massiv","String"],d:0},
+{q:"input nə edir?",a:["Məlumat alır","Çap"],d:0},
+{q:"== nədir?",a:["Bərabər","Toplama"],d:0},
+{q:"indent nədir?",a:["Boşluq","Loop"],d:0},
+{q:"range nədir?",a:["Aralıq","Funksiya"],d:0}
 ]
 
 };
 
-let current = 0;
-let score = 0;
-let currentQuiz = [];
+function basla(fenn){
+  let html="";
+  suallar[fenn].forEach((s,i)=>{
+    html+=`
+    <div class="card">
+    <h3>${i+1}. ${s.q}</h3>
+    ${s.a.map((c,j)=>`
+      <label>
+      <input type="radio" name="s${i}" value="${j}">
+      ${c}
+      </label><br>
+    `).join("")}
+    </div>
+    `;
+  });
 
-function startQuiz(type){
-  currentQuiz = quizzes[type];
-  current = 0;
-  score = 0;
-  document.getElementById("quizBox").style.display="block";
-  load();
+  html+=`<button onclick="yoxla('${fenn}')">Yoxla</button>
+  <h2 id="netice"></h2>`;
+
+  document.getElementById("quiz").innerHTML=html;
 }
 
-function load(){
-  document.getElementById("question").innerText = currentQuiz[current].q;
-  document.getElementById("a0").innerText = currentQuiz[current].a[0];
-  document.getElementById("a1").innerText = currentQuiz[current].a[1];
-  document.getElementById("a2").innerText = currentQuiz[current].a[2];
-}
+function yoxla(fenn){
+  let bal=0;
 
-function answer(i){
-  if(i === currentQuiz[current].c){
-    score++;
-  }
+  suallar[fenn].forEach((s,i)=>{
+    let sec=document.querySelector(\`input[name="s\${i}"]:checked\`);
+    if(sec && sec.value==s.d){
+      bal++;
+    }
+  });
 
-  current++;
-
-  if(current < currentQuiz.length){
-    load();
-  }else{
-    document.getElementById("quizBox").innerHTML =
-    "<h2>Bitdi 🎉</h2><p>Balın: "+score+"/10</p>";
-  }
+  document.getElementById("netice").innerText="Bal: "+bal+" / "+suallar[fenn].length;
 }
 </script>
 
