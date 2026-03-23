@@ -125,6 +125,7 @@ function toggleMode(){
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
 
 <div class="logo">💻 CodeLab</div>
@@ -141,6 +142,7 @@ function toggleMode(){
 
 </div>
 
+<!-- CONTENT -->
 <div class="content">
 
 <h1 class="glow">Salam, <span id="name"></span> 👋</h1>
@@ -179,19 +181,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// USER CHECK + NAME
+let loaded=false;
+
+// LOGIN CHECK + USER NAME
 auth.onAuthStateChanged(user=>{
-  if(!user){
-    window.location="login.html";
-  }else{
+  if(user){
     document.getElementById("name").innerText = user.email;
+    loaded=true;
+  }else{
+    setTimeout(()=>{
+      if(!loaded){
+        window.location.href="login.html";
+      }
+    },1000);
   }
 });
 
 // LOGOUT
 function logout(){
   auth.signOut().then(()=>{
-    window.location="login.html";
+    window.location.href="login.html";
   });
 }
 
