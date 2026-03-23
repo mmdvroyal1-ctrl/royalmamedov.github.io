@@ -2,59 +2,107 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>CSS Tam Dərs</title>
+<title>CSS Kitab - CodeLab</title>
 
 <style>
-body{background:#020617;color:white;font-family:Arial;padding:20px;line-height:1.7;}
-h1,h2{color:#22c55e;}
-.card{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px;}
-pre{background:black;color:lime;padding:10px;border-radius:10px;}
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+  line-height:1.8;
+}
+h1,h2{
+  color:#22c55e;
+}
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+pre{
+  background:black;
+  color:lime;
+  padding:15px;
+  border-radius:10px;
+  overflow:auto;
+}
 </style>
-
 </head>
 <body>
 
-<h1>🎨 CSS Tam Bələdçi</h1>
+<h1>🎨 CSS TAM PRO KİTAB</h1>
 
 <div class="card">
-<h2>CSS nədir?</h2>
+<h2>📜 CSS nədir?</h2>
 <p>
-CSS (Cascading Style Sheets) saytın dizaynını yaradır. HTML struktur verirsə,
-CSS görünüşü idarə edir.
+CSS (Cascading Style Sheets) veb saytların dizaynını idarə edən dildir.
 </p>
 </div>
 
 <div class="card">
 <h2>👨‍💻 Kim yaradıb?</h2>
 <p>
-CSS 1996-cı ildə <strong>Håkon Wium Lie</strong> tərəfindən yaradılmışdır.
+CSS 1996-cı ildə Håkon Wium Lie tərəfindən yaradılmışdır.
 </p>
 </div>
 
 <div class="card">
-<h2>🎯 Niyə yaradılıb?</h2>
+<h2>🎯 Məqsəd</h2>
 <p>
-HTML dizayn üçün kifayət etmirdi. CSS yaradıldı ki,
-saytın görünüşü ayrıca idarə olunsun.
+Saytın görünüşünü gözəlləşdirmək və dizayn vermək.
 </p>
 </div>
 
 <div class="card">
-<h2>🎨 Nümunə</h2>
+<h2>🧱 Sintaksis</h2>
 <pre>
-body {
-  background:black;
-  color:white;
+selector {
+  property: value;
 }
+</pre>
+</div>
+
+<div class="card">
+<h2>🎨 Rənglər</h2>
+<pre>
+color: red;
+background: black;
+</pre>
+</div>
+
+<div class="card">
+<h2>📏 Ölçülər</h2>
+<pre>
+width:100px;
+height:200px;
+</pre>
+</div>
+
+<div class="card">
+<h2>📦 Box Model</h2>
+<pre>
+margin:10px;
+padding:10px;
+border:1px solid white;
 </pre>
 </div>
 
 <div class="card">
 <h2>📐 Flexbox</h2>
 <pre>
-.container {
-  display:flex;
-  justify-content:center;
+display:flex;
+justify-content:center;
+align-items:center;
+</pre>
+</div>
+
+<div class="card">
+<h2>📱 Responsive</h2>
+<pre>
+@media(max-width:600px){
+  body{background:red;}
 }
 </pre>
 </div>
@@ -62,19 +110,22 @@ body {
 <div class="card">
 <h2>✨ Animasiya</h2>
 <pre>
-.box:hover {
-  transform:scale(1.2);
+@keyframes glow{
+ from{opacity:0;}
+ to{opacity:1;}
 }
 </pre>
 </div>
 
 <div class="card">
-<h2>🚀 Nə edə bilərsən?</h2>
-<ul>
-<li>Modern UI</li>
-<li>Animasiya</li>
-<li>Responsive dizayn</li>
-</ul>
+<h2>🚀 Real nümunə</h2>
+<pre>
+button{
+  background:#22c55e;
+  padding:10px;
+  border-radius:10px;
+}
+</pre>
 </div>
 
 <a href="index.html">⬅ Geri</a>
