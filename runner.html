@@ -13,6 +13,10 @@ body{
   text-align:center;
 }
 
+h1{
+  margin:10px;
+}
+
 .menu button{
   padding:10px;
   margin:5px;
@@ -25,7 +29,7 @@ body{
 
 iframe{
   width:100%;
-  height:90vh;
+  height:85vh;
   border:none;
 }
 </style>
@@ -36,27 +40,27 @@ iframe{
 <h1>💻 Code Runner</h1>
 
 <div class="menu">
-<button onclick="load('web')">🌐 HTML/CSS/JS</button>
+<button onclick="load('html')">🌐 HTML</button>
 <button onclick="load('python')">🐍 Python</button>
 <button onclick="load('cpp')">⚙️ C++</button>
 </div>
 
-<iframe id="frame"></iframe>
+<iframe id="frame" src="https://onecompiler.com/html"></iframe>
 
 <script>
 function load(type){
   let frame = document.getElementById("frame");
 
-  if(type==="web"){
-    frame.src = "https://onecompiler.com/html";
+  if(type==="html"){
+    frame.src="https://onecompiler.com/html";
   }
 
   if(type==="python"){
-    frame.src = "https://onecompiler.com/python";
+    frame.src="https://onecompiler.com/python";
   }
 
   if(type==="cpp"){
-    frame.src = "https://onecompiler.com/cpp";
+    frame.src="https://onecompiler.com/cpp";
   }
 }
 </script>
