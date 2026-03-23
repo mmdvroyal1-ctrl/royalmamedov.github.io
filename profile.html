@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profil</title>
+
+<style>
+body{background:#020617;color:white;font-family:Arial;padding:20px;}
+input,textarea{display:block;margin:10px 0;padding:10px;border-radius:10px;border:none;}
+button{padding:10px;background:#22c55e;border:none;color:white;border-radius:10px;}
+</style>
+
+</head>
+<body>
+
+<h1>👤 Profil</h1>
+
+<input id="name" placeholder="Ad">
+<textarea id="bio" placeholder="Bio"></textarea>
+
+<button onclick="save()">Yadda saxla</button>
+
+<script>
+document.getElementById("name").value=localStorage.getItem("user")||"";
+document.getElementById("bio").value=localStorage.getItem("bio")||"";
+
+function save(){
+  localStorage.setItem("user",document.getElementById("name").value);
+  localStorage.setItem("bio",document.getElementById("bio").value);
+  alert("Yadda saxlandı!");
+}
+</script>
+
+</body>
+</html>
