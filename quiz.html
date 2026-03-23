@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="az">
 <head>
+<meta charset="UTF-8">
 <title>Quiz</title>
 
 <style>
-body{background:#020617;color:white;font-family:Arial;padding:20px;}
-button{padding:10px;margin:5px;background:#22c55e;border:none;color:white;border-radius:10px;}
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+button{
+  padding:10px;
+  margin:5px;
+  background:#22c55e;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
 </style>
 
 </head>
@@ -15,17 +29,22 @@ button{padding:10px;margin:5px;background:#22c55e;border:none;color:white;border
 
 <h3>HTML nədir?</h3>
 
-<button onclick="check(1)">Program dili</button>
-<button onclick="check(2)">Markup dili</button>
+<button onclick="checkAnswer(1)">Program dili</button>
+<button onclick="checkAnswer(2)">Markup dili</button>
 
 <p id="result"></p>
 
+<br>
+<a href="index.html">⬅ Geri</a>
+
 <script>
-function check(ans){
-  if(ans==2){
-    document.getElementById("result").innerText="Doğru ✅";
+function checkAnswer(answer){
+  let result = document.getElementById("result");
+
+  if(answer === 2){
+    result.innerText = "Doğru ✅";
   }else{
-    document.getElementById("result").innerText="Yanlış ❌";
+    result.innerText = "Yanlış ❌";
   }
 }
 </script>
