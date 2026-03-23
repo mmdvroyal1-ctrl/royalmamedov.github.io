@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Runner</title>
+<style>
+body{background:#020617;color:white;text-align:center;font-family:Arial;}
+textarea{width:80%;height:200px;}
+iframe{width:80%;height:200px;background:white;}
+button{padding:10px;background:#22c55e;border:none;color:white;}
+</style>
+</head>
+<body>
+
+<h1>💻 Code Runner</h1>
+
+<textarea id="code"></textarea>
+
+<br><br>
+
+<button onclick="runCode()">Run</button>
+
+<iframe id="result"></iframe>
+
+<script>
+window.onload=function(){
+  document.getElementById("code").value=localStorage.getItem("code")||"";
+}
+
+function runCode(){
+  let code=document.getElementById("code").value;
+  document.getElementById("result").srcdoc=code;
+  localStorage.setItem("code",code);
+}
+</script>
+
+</body>
+</html>
