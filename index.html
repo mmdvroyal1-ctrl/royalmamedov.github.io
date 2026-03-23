@@ -2,77 +2,95 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kodlama Öyrən</title>
+
   <style>
     body {
       margin: 0;
       font-family: Arial;
-      background: #0f172a;
+      background: linear-gradient(to right, #0f172a, #1e3a8a);
       color: white;
     }
+
     header {
-      background: #1e293b;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
-      font-size: 24px;
+      font-size: 28px;
+      background: rgba(0,0,0,0.3);
     }
+
     nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      background: #334155;
+      gap: 30px;
+      background: rgba(255,255,255,0.1);
       padding: 10px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
+      font-weight: bold;
     }
+
     .container {
       padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
+
     .card {
-      background: #1e293b;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 15px;
+      transition: 0.3s;
     }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
     button {
-      background: #22c55e;
-      border: none;
+      margin-top: 10px;
       padding: 10px;
-      border-radius: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
       cursor: pointer;
     }
   </style>
 </head>
+
 <body>
 
-<header>💻 Kodlama Öyrən</header>
+<header>🚀 Kodlama Öyrən</header>
 
 <nav>
-  <a href="#">HTML</a>
-  <a href="#">CSS</a>
-  <a href="#">JavaScript</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="js.html">JavaScript</a>
 </nav>
 
 <div class="container">
 
   <div class="card">
     <h2>HTML nədir?</h2>
-    <p>HTML veb saytların skeletidir.</p>
-    <button onclick="alert('HTML öyrənməyə başladın!')">Başla</button>
+    <p>HTML veb saytların strukturunu yaradır.</p>
+    <a href="html.html"><button>Öyrən</button></a>
   </div>
 
   <div class="card">
     <h2>CSS nədir?</h2>
-    <p>CSS saytın görünüşünü dəyişir.</p>
-    <button onclick="alert('CSS öyrənməyə başladın!')">Başla</button>
+    <p>CSS saytın dizaynını və görünüşünü dəyişir.</p>
+    <a href="css.html"><button>Öyrən</button></a>
   </div>
 
   <div class="card">
     <h2>JavaScript nədir?</h2>
-    <p>JavaScript saytları interaktiv edir.</p>
-    <button onclick="alert('JS öyrənməyə başladın!')">Başla</button>
+    <p>JavaScript saytı interaktiv edir.</p>
+    <a href="js.html"><button>Öyrən</button></a>
   </div>
 
 </div>
