@@ -2,7 +2,7 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>Royal Platform</title>
+<title>CodeLab</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -30,19 +30,18 @@ body{
   border-right:1px solid rgba(255,255,255,0.1);
 }
 
-/* LOGO */
+/* LOGO TEXT */
 .logo{
   font-size:22px;
   font-weight:700;
   color:#22c55e;
-  margin-bottom:20px;
-  text-shadow:0 0 10px #22c55e, 0 0 20px #22c55e;
-  animation: glow 2s infinite alternate;
+  margin-bottom:5px;
 }
 
-@keyframes glow{
-  from{ text-shadow:0 0 5px #22c55e; }
-  to{ text-shadow:0 0 20px #22c55e; }
+.sub{
+  font-size:12px;
+  opacity:0.5;
+  margin-bottom:20px;
 }
 
 .sidebar a{
@@ -101,7 +100,7 @@ button{
   color:black;
 }
 
-/* GLOW TEXT */
+/* TEXT */
 .glow{
   color:#22c55e;
   text-shadow:0 0 10px #22c55e, 0 0 20px #22c55e;
@@ -161,7 +160,8 @@ window.onload=function(){
 <!-- SIDEBAR -->
 <div class="sidebar fade">
 
-<div class="logo">👑 Royal Mamedov</div>
+<div class="logo">💻 CodeLab</div>
+<div class="sub">by Royal Mamedov</div>
 
 <a href="html.html">📄 HTML</a>
 <a href="css.html">🎨 CSS</a>
@@ -181,17 +181,20 @@ window.onload=function(){
 <button class="mode" onclick="toggleMode()">🌙 Mode</button>
 
 <div class="card">
-<h2>🚀 Platformaya xoş gəldin</h2>
+<h2>🚀 CodeLab platformasına xoş gəldin</h2>
 <p>
-Bu platformada sən HTML, CSS və JavaScript öyrənə bilərsən.
+Bu platformada sən HTML, CSS və JavaScript-i sıfırdan professional səviyyəyə qədər öyrənə bilərsən.
 </p>
 </div>
 
 <div class="card">
 <h2>💡 Nə edə bilərsən?</h2>
-<p>
-Kod yaz, quiz həll et və developer kimi inkişaf et.
-</p>
+<ul>
+<li>📘 Dərsləri oxu</li>
+<li>💻 Kod yaz və test et</li>
+<li>🎓 Quiz həll et</li>
+<li>📊 Öz inkişafını izlə</li>
+</ul>
 </div>
 
 </div>
