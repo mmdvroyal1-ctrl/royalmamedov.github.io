@@ -2,84 +2,134 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>Kodlama Öyrən</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Platform</title>
+
+<script>
+if(localStorage.getItem("login")!=="true"){
+  window.location="login.html";
+}
+function logout(){
+  localStorage.removeItem("login");
+  window.location="login.html";
+}
+</script>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  background: linear-gradient(to right, #0f172a, #1e3a8a);
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial;
+  display:flex;
+  background:linear-gradient(to right,#020617,#1e3a8a);
   color:white;
 }
 
-header {
+/* Sidebar */
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:#020617;
+  padding:20px;
+  border-right:1px solid #1e293b;
+}
+
+.logo{
   text-align:center;
-  padding:15px;
   font-size:22px;
-  font-weight:bold;
-  background: linear-gradient(to right, #22c55e, #3b82f6);
-}
-
-.container {
-  padding:20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.1);
-  padding:20px;
-  border-radius:15px;
   margin-bottom:20px;
+  font-weight:bold;
+  color:#22c55e;
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  margin:8px 0;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
   transition:0.3s;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.sidebar a:hover{
+  background:#1e293b;
+  transform:translateX(5px);
 }
 
-button {
-  padding:10px;
+/* Content */
+.content{
+  flex:1;
+  padding:20px;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.logout{
+  padding:10px 15px;
+  background:#ef4444;
   border:none;
-  border-radius:10px;
-  background:#22c55e;
   color:white;
+  border-radius:10px;
   cursor:pointer;
 }
 
-footer {
-  text-align:center;
-  margin-top:30px;
-  opacity:0.7;
+/* Cards */
+.card{
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 </style>
 
 </head>
 <body>
 
-<header>👑 ROYAL MAMEDOV</header>
+<div class="sidebar">
+<div class="logo">👑 ROYAL MAMEDOV</div>
 
-<div class="container">
+<a href="html.html">📄 HTML</a>
+<a href="css.html">🎨 CSS</a>
+<a href="js.html">⚡ JavaScript</a>
+<a href="runner.html">💻 Code Runner</a>
+</div>
 
-<div class="card">
-<h2>HTML nədir?</h2>
-<p>HTML saytın skeletidir</p>
-<a href="html.html"><button>Öyrən</button></a>
+<div class="content">
+
+<div class="topbar">
+<h1>Salam, <span id="name"></span> 👋</h1>
+<button class="logout" onclick="logout()">Logout</button>
 </div>
 
 <div class="card">
-<h2>CSS nədir?</h2>
-<p>CSS dizayn üçündür</p>
-<a href="css.html"><button>Öyrən</button></a>
+<h2>🚀 Platforma</h2>
+<p>Bu platformada sən kod yazıb öyrənə bilərsən.</p>
 </div>
 
 <div class="card">
-<h2>JavaScript nədir?</h2>
-<p>JavaScript interaktivlik verir</p>
-<a href="js.html"><button>Öyrən</button></a>
+<h2>📚 Bölmələr</h2>
+<p>HTML, CSS və JavaScript dərsləri + online code runner.</p>
 </div>
 
 </div>
 
-<footer>© 2026 Royal Mamedov</footer>
+<script>
+document.getElementById("name").innerText=localStorage.getItem("user");
+</script>
 
 </body>
 </html>
