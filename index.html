@@ -5,15 +5,39 @@
 <title>Royal Platform</title>
 
 <script>
-// Login yoxdursa login səhifəsinə at
+// Login yoxdursa loginə at
 if(localStorage.getItem("login")!=="true"){
   window.location="login.html";
 }
 
-// Logout funksiyası
+// Logout
 function logout(){
   localStorage.removeItem("login");
   window.location="login.html";
+}
+
+// Dark mode toggle
+function toggleMode(){
+  let mode = localStorage.getItem("mode");
+
+  if(mode==="light"){
+    document.body.style.background="#020617";
+    document.body.style.color="white";
+    localStorage.setItem("mode","dark");
+  }else{
+    document.body.style.background="white";
+    document.body.style.color="black";
+    localStorage.setItem("mode","light");
+  }
+}
+
+// Səhifə açılarkən mode tətbiq et
+window.onload=function(){
+  let mode = localStorage.getItem("mode");
+  if(mode==="light"){
+    document.body.style.background="white";
+    document.body.style.color="black";
+  }
 }
 </script>
 
@@ -27,10 +51,14 @@ body{
 }
 
 .sidebar{
-  width:230px;
+  width:240px;
   height:100vh;
   background:#020617;
   padding:20px;
+}
+
+.sidebar h2{
+  color:#22c55e;
 }
 
 .sidebar a{
@@ -60,12 +88,14 @@ body{
 
 button{
   padding:10px;
-  background:red;
-  color:white;
+  margin:5px;
   border:none;
   border-radius:10px;
   cursor:pointer;
 }
+
+.logout{background:red;color:white;}
+.mode{background:#22c55e;color:white;}
 </style>
 
 </head>
@@ -73,30 +103,35 @@ button{
 
 <div class="sidebar">
 <h2>👑 Royal</h2>
+
 <a href="html.html">📄 HTML</a>
 <a href="css.html">🎨 CSS</a>
 <a href="js.html">⚡ JavaScript</a>
 <a href="runner.html">💻 Runner</a>
+<a href="profile.html">👤 Profil</a>
+<a href="quiz.html">🎓 Quiz</a>
+
 </div>
 
 <div class="content">
 
 <h1>Salam, <span id="name"></span> 👋</h1>
 
-<button onclick="logout()">Logout</button>
+<button class="logout" onclick="logout()">Logout</button>
+<button class="mode" onclick="toggleMode()">🌙 Mode</button>
 
 <div class="card">
 Platformaya xoş gəldin!
 </div>
 
 <div class="card">
-Burada sən HTML, CSS və JavaScript öyrənə bilərsən.
+Bu platformada HTML, CSS və JavaScript öyrənə bilərsən.
 </div>
 
 </div>
 
 <script>
-// USER ADINI GÖSTƏRİR
+// User adını göstər
 let user = localStorage.getItem("user") || "Qonaq";
 document.getElementById("name").innerText = user;
 </script>
