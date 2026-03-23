@@ -8,7 +8,7 @@
 body{background:#020617;color:white;font-family:Arial;padding:20px;line-height:1.8;}
 h1,h2{color:#22c55e;}
 .card{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px;}
-pre{background:black;color:lime;padding:15px;border-radius:10px;}
+pre{background:black;color:lime;padding:15px;border-radius:10px;overflow:auto;}
 button{padding:10px;background:#22c55e;border:none;border-radius:10px;color:white;}
 </style>
 </head>
@@ -53,10 +53,12 @@ yas = 20
 </div>
 
 <div class="card">
-<h2>🔧 Şərt</h2>
+<h2>🔧 Şərt (DÜZGÜN)</h2>
 <pre>
+yas = 20
+
 if yas > 18:
- print("Böyüksən")
+    print("Böyüksən")
 </pre>
 </div>
 
@@ -64,15 +66,17 @@ if yas > 18:
 <h2>🔁 Döngü</h2>
 <pre>
 for i in range(5):
- print(i)
+    print(i)
 </pre>
 </div>
 
 <div class="card">
 <h2>🧠 Funksiya</h2>
 <pre>
-def topla(a,b):
- return a+b
+def topla(a, b):
+    return a + b
+
+print(topla(2,3))
 </pre>
 </div>
 
@@ -86,11 +90,4 @@ def topla(a,b):
 </div>
 
 <div class="card">
-<h2>🎯 Test</h2>
-<button onclick="alert('Python güclüdür 🔥')">Kliklə</button>
-</div>
-
-<a href="index.html">⬅ Geri</a>
-
-</body>
-</html>
+<h2>
