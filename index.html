@@ -51,12 +51,18 @@ button{
   border-radius:10px;
   margin:5px;
   cursor:pointer;
+  background:#22c55e;
+  color:white;
 }
 
-.logout{background:red;color:white;}
-.mode{background:lime;color:black;}
-
+.logout{background:red;}
 .glow{color:#22c55e;}
+
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
 </style>
 </head>
 
@@ -85,6 +91,16 @@ button{
 <p>Platformaya uğurla daxil oldun</p>
 </div>
 
+<!-- 🤖 AI SECTION -->
+<div class="card">
+<h2>🤖 AI Köməkçi</h2>
+
+<input id="aiInput" placeholder="Sual ver..." style="width:100%;margin-top:10px;">
+<button onclick="askAI()">Soruş</button>
+
+<div id="aiResponse" style="margin-top:10px;"></div>
+</div>
+
 </div>
 
 <script>
@@ -97,7 +113,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// 🔥 LOGIN CHECK (FIXED)
+// LOGIN CHECK
 setTimeout(()=>{
   let user = auth.currentUser;
 
@@ -113,6 +129,31 @@ function logout(){
   auth.signOut().then(()=>{
     window.location.href="login.html";
   });
+}
+
+// 🤖 FAKE AI (PULSUZ)
+function askAI(){
+  let q = document.getElementById("aiInput").value.toLowerCase();
+  let res = document.getElementById("aiResponse");
+
+  if(q.includes("html")){
+    res.innerText="HTML saytın skeletidir 🧱";
+  }
+  else if(q.includes("css")){
+    res.innerText="CSS dizayn üçündür 🎨";
+  }
+  else if(q.includes("javascript") || q.includes("js")){
+    res.innerText="JavaScript saytı canlandırır ⚡";
+  }
+  else if(q.includes("python")){
+    res.innerText="Python sadə və güclü dildir 🐍";
+  }
+  else if(q.includes("c++")){
+    res.innerText="C++ sürətli və güclü proqramlaşdırma dilidir ⚙️";
+  }
+  else{
+    res.innerText="Bunu hələ bilmirəm 😅 amma tezliklə öyrənəcəm!";
+  }
 }
 </script>
 
