@@ -2,7 +2,7 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>JavaScript Tam Dərs</title>
+<title>JavaScript Kitab - CodeLab</title>
 
 <style>
 body{
@@ -10,9 +10,11 @@ body{
   color:white;
   font-family:Arial;
   padding:20px;
-  line-height:1.7;
+  line-height:1.8;
 }
-h1,h2{color:#22c55e;}
+h1,h2{
+  color:#22c55e;
+}
 .card{
   background:#1e293b;
   padding:20px;
@@ -22,49 +24,46 @@ h1,h2{color:#22c55e;}
 pre{
   background:black;
   color:lime;
-  padding:10px;
+  padding:15px;
   border-radius:10px;
+  overflow:auto;
 }
 button{
   padding:10px;
   background:#22c55e;
   border:none;
-  color:white;
   border-radius:10px;
-  cursor:pointer;
+  color:white;
 }
 </style>
-
 </head>
 <body>
 
-<h1>⚡ JavaScript Tam Bələdçi</h1>
-
-<h2>Salam, <span id="name"></span> 👋</h2>
+<h1>⚡ JavaScript TAM PRO KİTAB</h1>
 
 <div class="card">
-<h2>JavaScript nədir?</h2>
+<h2>📜 JavaScript nədir?</h2>
 <p>
-JavaScript veb saytları interaktiv edən proqramlaşdırma dilidir.
+JavaScript saytları interaktiv edən proqramlaşdırma dilidir.
 </p>
 </div>
 
 <div class="card">
 <h2>👨‍💻 Kim yaradıb?</h2>
 <p>
-JavaScript 1995-ci ildə <strong>Brendan Eich</strong> tərəfindən yaradılmışdır.
+JavaScript 1995-ci ildə Brendan Eich tərəfindən yaradılmışdır.
 </p>
 </div>
 
 <div class="card">
-<h2>🎯 Niyə yaradılıb?</h2>
+<h2>🎯 Məqsəd</h2>
 <p>
-Saytları dinamik etmək və istifadəçi ilə əlaqə qurmaq üçün yaradılıb.
+Saytı dinamik etmək və istifadəçi ilə əlaqə yaratmaq.
 </p>
 </div>
 
 <div class="card">
-<h2>📦 Dəyişən</h2>
+<h2>📦 Dəyişənlər</h2>
 <pre>
 let ad = "Royal";
 </pre>
@@ -74,19 +73,49 @@ let ad = "Royal";
 <h2>🔧 Funksiya</h2>
 <pre>
 function salam(){
-  let user = localStorage.getItem("user");
-  alert("Salam " + user);
+ alert("Salam");
 }
 </pre>
 </div>
 
 <div class="card">
-<h2>🎯 Test</h2>
-<button onclick="salam()">Kliklə</button>
+<h2>🎯 Şərt</h2>
+<pre>
+if(ad==="Royal"){
+ console.log("Doğrudur");
+}
+</pre>
 </div>
 
 <div class="card">
-<h2>🚀 Nə edə bilərsən?</h2>
+<h2>🔁 Döngü</h2>
+<pre>
+for(let i=0;i<5;i++){
+ console.log(i);
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>🌐 DOM</h2>
+<pre>
+document.getElementById("id").innerText="Salam";
+</pre>
+</div>
+
+<div class="card">
+<h2>🚀 Event</h2>
+<pre>
+button.onclick=function(){
+ alert("Klik!");
+}
+</pre>
+
+<button onclick="alert('Salam Royal 👑')">Test et</button>
+</div>
+
+<div class="card">
+<h2>💡 Nə edə bilərsən?</h2>
 <ul>
 <li>Web app</li>
 <li>Oyun</li>
@@ -95,18 +124,6 @@ function salam(){
 </div>
 
 <a href="index.html">⬅ Geri</a>
-
-<script>
-// USER ADINI YUXARIDA GÖSTƏRİR
-let user = localStorage.getItem("user") || "Qonaq";
-document.getElementById("name").innerText = user;
-
-// BUTTON FUNKSİYA
-function salam(){
-  let user = localStorage.getItem("user") || "Qonaq";
-  alert("Salam " + user + " 👑");
-}
-</script>
 
 </body>
 </html>
