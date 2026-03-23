@@ -25,6 +25,7 @@ h1{
   background:white;
   color:black;
   cursor:pointer;
+  font-weight:bold;
 }
 
 .card{
@@ -37,7 +38,7 @@ h1{
 
 label{
   display:block;
-  padding:5px;
+  padding:6px;
   cursor:pointer;
 }
 
@@ -65,33 +66,80 @@ button{
 
 <div id="quiz"></div>
 
+<a href="index.html" style="color:white;display:block;margin-top:20px;">⬅ Geri</a>
+
 <script>
 
 let suallar = {
 
+/* HTML */
 html:[
 {q:"HTML nədir?",a:["Markup dili","Proqram dili"],d:0},
-{q:"<h1> nədir?",a:["Başlıq","Şəkil"],d:0}
+{q:"<h1> nədir?",a:["Başlıq","Şəkil"],d:0},
+{q:"<p> nədir?",a:["Paraqraf","Link"],d:0},
+{q:"<a> nə edir?",a:["Link","Şəkil"],d:0},
+{q:"<img> nədir?",a:["Şəkil","Text"],d:0},
+{q:"<ul> nədir?",a:["Siyahı","Şəkil"],d:0},
+{q:"<li> nədir?",a:["Element","CSS"],d:0},
+{q:"<title> nədir?",a:["Başlıq","Kod"],d:0},
+{q:"HTML harada işləyir?",a:["Brauzer","Server"],d:0},
+{q:"<br> nə edir?",a:["Yeni sətir","Şəkil"],d:0}
 ],
 
+/* CSS */
 css:[
 {q:"CSS nədir?",a:["Stil dili","Proqram dili"],d:0},
-{q:"color nə edir?",a:["Rəng","Şəkil"],d:0}
+{q:"color nə edir?",a:["Rəng","Ölçü"],d:0},
+{q:"background nədir?",a:["Fon","Text"],d:0},
+{q:"font-size nədir?",a:["Yazı ölçüsü","Rəng"],d:0},
+{q:"margin nədir?",a:["Kənar boşluq","Rəng"],d:0},
+{q:"padding nədir?",a:["Daxili boşluq","Border"],d:0},
+{q:"display nədir?",a:["Görünüş","Rəng"],d:0},
+{q:"flex nədir?",a:["Layout","Rəng"],d:0},
+{q:"border nədir?",a:["Çərçivə","Font"],d:0},
+{q:":hover nədir?",a:["Mouse effekt","Click"],d:0}
 ],
 
+/* JS */
 js:[
 {q:"JS nədir?",a:["Proqram dili","Stil"],d:0},
-{q:"alert nə edir?",a:["Mesaj","Silir"],d:0}
+{q:"alert nə edir?",a:["Mesaj göstərir","Silir"],d:0},
+{q:"let nədir?",a:["Dəyişən","Funksiya"],d:0},
+{q:"function nədir?",a:["Funksiya","Loop"],d:0},
+{q:"if nə edir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Şərt"],d:0},
+{q:"console.log nə edir?",a:["Yazır","Silir"],d:0},
+{q:"onclick nədir?",a:["Klik hadisə","Rəng"],d:0},
+{q:"array nədir?",a:["Massiv","String"],d:0},
+{q:"=== nədir?",a:["Tam bərabər","Toplama"],d:0}
 ],
 
+/* C++ */
 cpp:[
 {q:"C++ nədir?",a:["Proqram dili","HTML"],d:0},
-{q:"cout nə edir?",a:["Çap","Silir"],d:0}
+{q:"cout nə edir?",a:["Çap","Silir"],d:0},
+{q:"cin nədir?",a:["Input","Output"],d:0},
+{q:"int nədir?",a:["Rəqəm tipi","String"],d:0},
+{q:"main nədir?",a:["Baş funksiya","Loop"],d:0},
+{q:"if nə edir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Print"],d:0},
+{q:"return 0 nədir?",a:["Bitir","Loop"],d:0},
+{q:"#include nədir?",a:["Kitabxana","Loop"],d:0},
+{q:"string nədir?",a:["Mətn","Rəqəm"],d:0}
 ],
 
+/* PYTHON */
 python:[
 {q:"Python nədir?",a:["Proqram dili","HTML"],d:0},
-{q:"print nə edir?",a:["Çap","Silir"],d:0}
+{q:"print nə edir?",a:["Çap","Silir"],d:0},
+{q:"if nədir?",a:["Şərt","Loop"],d:0},
+{q:"for nədir?",a:["Döngü","Funksiya"],d:0},
+{q:"def nədir?",a:["Funksiya","Dəyişən"],d:0},
+{q:"list nədir?",a:["Massiv","String"],d:0},
+{q:"input nə edir?",a:["Məlumat alır","Çap"],d:0},
+{q:"== nədir?",a:["Bərabər","Toplama"],d:0},
+{q:"indent nədir?",a:["Boşluq sistemi","Loop"],d:0},
+{q:"range nədir?",a:["Aralıq","Funksiya"],d:0}
 ]
 
 };
@@ -158,7 +206,7 @@ function yoxla(fenn){
     }
   }
 
-  document.getElementById("netice").innerText="Bal: "+bal;
+  document.getElementById("netice").innerText="Bal: "+bal+" / "+data.length;
 }
 
 </script>
