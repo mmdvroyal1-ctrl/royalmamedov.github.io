@@ -10,49 +10,50 @@
 <style>
 body{
   background:#020617;
-  color:white;
-  font-family:Arial;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
+  font-family:Arial;
+  color:white;
 }
 
-.card{
+.box{
   background:#1e293b;
   padding:30px;
   border-radius:20px;
-  text-align:center;
   width:300px;
+  text-align:center;
 }
 
 input{
-  display:block;
-  margin:10px auto;
-  padding:10px;
   width:100%;
+  padding:10px;
+  margin:10px 0;
   border-radius:10px;
   border:none;
 }
 
 button{
+  width:100%;
   padding:10px;
-  background:#22c55e;
+  margin:5px 0;
   border:none;
   border-radius:10px;
+  background:#22c55e;
   color:white;
-  margin-top:10px;
-  width:100%;
+  cursor:pointer;
 }
 </style>
 </head>
+
 <body>
 
-<div class="card">
+<div class="box">
 <h2>🔐 Login / Register</h2>
 
 <input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Şifrə">
 
 <button onclick="register()">Register</button>
 <button onclick="login()">Login</button>
@@ -61,7 +62,6 @@ button{
 </div>
 
 <script>
-
 const firebaseConfig = {
   apiKey: "AIzaSyAdERxfMTkvmMsPzzNy69D4q5SSZMn9HjQ",
   authDomain: "codelab-1414f.firebaseapp.com",
@@ -71,15 +71,21 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+// REGISTER
 function register(){
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
 
   auth.createUserWithEmailAndPassword(email,pass)
-  .then(()=>{document.getElementById("msg").innerText="Qeydiyyat OK";})
-  .catch(e=>{document.getElementById("msg").innerText=e.message;});
+  .then(()=>{
+    document.getElementById("msg").innerText="Qeydiyyat uğurlu!";
+  })
+  .catch(e=>{
+    document.getElementById("msg").innerText=e.message;
+  });
 }
 
+// LOGIN
 function login(){
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
@@ -92,7 +98,6 @@ function login(){
     document.getElementById("msg").innerText=e.message;
   });
 }
-
 </script>
 
 </body>
