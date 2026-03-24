@@ -2,99 +2,253 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>C++ Kitab - CodeLab</title>
+<title>C++ Ultimate - CodeLab</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{background:#020617;color:white;font-family:Arial;padding:20px;line-height:1.8;}
-h1,h2{color:#22c55e;}
-.card{background:#1e293b;padding:20px;border-radius:15px;margin-bottom:20px;}
-pre{background:black;color:lime;padding:15px;border-radius:10px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  background:linear-gradient(135deg,#020617,#020617,#0f172a);
+  color:white;
+  padding:20px;
+}
+
+/* BG EFFECT */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;height:300px;
+  filter:blur(150px);
+  opacity:.2;
+  pointer-events:none;
+}
+
+body::before{background:#22c55e;top:0;left:0;}
+body::after{background:#0ea5e9;bottom:0;right:0;}
+
+/* BACK */
+.back{
+  padding:10px 15px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-bottom:20px;
+  position:relative;
+  z-index:10;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:15px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* TITLE */
+h1{
+  color:#22c55e;
+  margin-bottom:15px;
+}
+
+/* ACCORDION */
+.section{
+  cursor:pointer;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.content{
+  display:none;
+  margin-top:10px;
+}
+
+/* CODE */
+pre{
+  background:#000;
+  padding:10px;
+  border-radius:10px;
+  color:#22c55e;
+  overflow:auto;
+}
+
+/* BUTTON */
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+/* TEXTAREA */
+textarea{
+  width:100%;
+  height:180px;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+  border:none;
+}
+
+/* OUTPUT */
+#output{
+  margin-top:10px;
+  padding:15px;
+  background:black;
+  border-radius:10px;
+  color:#22c55e;
+  min-height:50px;
+  font-family:monospace;
+}
+
+/* iframe */
+iframe{
+  width:100%;
+  height:200px;
+  margin-top:10px;
+  border-radius:10px;
+}
 </style>
 </head>
+
 <body>
 
-<h1>⚙️ C++ TAM PRO KİTAB</h1>
+<button class="back" onclick="goBack()">⬅️ Geri qayıt</button>
 
 <div class="card">
-<h2>📜 C++ nədir?</h2>
-<p>
-C++ yüksək performanslı proqramlaşdırma dilidir. Sistem proqramlaşdırma, oyunlar və tətbiqlər üçün istifadə olunur.
-</p>
+
+<h1>⚙️ C++ ULTIMATE</h1>
+
+<!-- NƏDİR -->
+<div class="section" onclick="toggle(this)">📌 C++ nədir?</div>
+<div class="content">
+<p>C++ sürətli və güclü proqramlaşdırma dilidir. Oyunlar, sistemlər və yarış proqramlaşdırmada istifadə olunur.</p>
 </div>
 
-<div class="card">
-<h2>👨‍💻 Kim yaradıb?</h2>
-<p>
-C++ 1985-ci ildə Bjarne Stroustrup tərəfindən yaradılmışdır.
-</p>
-</div>
-
-<div class="card">
-<h2>🎯 Məqsəd</h2>
-<p>
-Sürətli və güclü proqramlar yaratmaq.
-</p>
-</div>
-
-<div class="card">
-<h2>🧱 Əsas kod</h2>
-<pre>
-#include &lt;iostream&gt;
+<!-- HELLO WORLD -->
+<div class="section" onclick="toggle(this)">📌 İlk proqram</div>
+<div class="content">
+<pre id="c1">#include &lt;iostream&gt;
 using namespace std;
 
 int main(){
- cout &lt;&lt; "Salam Dünya";
- return 0;
+  cout &lt;&lt; "Salam Dünya";
+  return 0;
+}</pre>
+<button onclick="copy('c1')">Copy</button>
+</div>
+
+<!-- VARIABLE -->
+<div class="section" onclick="toggle(this)">📌 Dəyişənlər</div>
+<div class="content">
+<pre id="c2">int a = 5;
+float b = 2.5;
+string ad = "Royal";</pre>
+<button onclick="copy('c2')">Copy</button>
+</div>
+
+<!-- IF -->
+<div class="section" onclick="toggle(this)">📌 Şərt (if)</div>
+<div class="content">
+<pre id="c3">if(a > 5){
+  cout &lt;&lt; "Böyükdür";
+}</pre>
+<button onclick="copy('c3')">Copy</button>
+</div>
+
+<!-- LOOP -->
+<div class="section" onclick="toggle(this)">📌 Dövr (for)</div>
+<div class="content">
+<pre id="c4">for(int i=0;i&lt;5;i++){
+  cout &lt;&lt; i;
+}</pre>
+<button onclick="copy('c4')">Copy</button>
+</div>
+
+<!-- FUNCTION -->
+<div class="section" onclick="toggle(this)">📌 Funksiya</div>
+<div class="content">
+<pre id="c5">int topla(int a,int b){
+  return a+b;
+}</pre>
+<button onclick="copy('c5')">Copy</button>
+</div>
+
+<!-- VIDEO -->
+<div class="section" onclick="toggle(this)">📌 Video dərs</div>
+<div class="content">
+<iframe src="https://www.youtube.com/embed/vLnPwxZdW4Y"></iframe>
+</div>
+
+<!-- RUNNER -->
+<div class="section" onclick="toggle(this)">💻 C++ Test (Simulyasiya)</div>
+<div class="content">
+
+<textarea id="cppInput">
+cout << "Salam";
+</textarea>
+
+<button onclick="runCPP()">Run</button>
+
+<div id="output"></div>
+
+</div>
+
+</div>
+
+<script>
+
+/* BACK */
+function goBack(){
+  if(history.length > 1){
+    history.back();
+  }else{
+    window.location.href="index.html";
+  }
 }
-</pre>
-</div>
 
-<div class="card">
-<h2>📦 Dəyişənlər</h2>
-<pre>
-int a = 5;
-float b = 3.5;
-string ad = "Royal";
-</pre>
-</div>
-
-<div class="card">
-<h2>🔧 Şərt</h2>
-<pre>
-if(a > 3){
- cout &lt;&lt; "Böyükdür";
+/* ACCORDION */
+function toggle(el){
+  let c = el.nextElementSibling;
+  c.style.display = c.style.display=="block"?"none":"block";
 }
-</pre>
-</div>
 
-<div class="card">
-<h2>🔁 Döngü</h2>
-<pre>
-for(int i=0;i<5;i++){
- cout &lt;&lt; i;
+/* COPY */
+function copy(id){
+  navigator.clipboard.writeText(
+    document.getElementById(id).innerText
+  );
+  alert("Kopyalandı!");
 }
-</pre>
-</div>
 
-<div class="card">
-<h2>🧠 Funksiya</h2>
-<pre>
-int topla(int a,int b){
- return a+b;
+/* FAKE RUN */
+function runCPP(){
+  let code = document.getElementById("cppInput").value;
+  let output = document.getElementById("output");
+
+  if(code.includes("cout")){
+    let text = code.split("<<")[1];
+    if(text){
+      text = text.replace(/[";]/g,"");
+      output.innerText = text;
+    }else{
+      output.innerText = "Çıxış tapılmadı";
+    }
+  }else{
+    output.innerText = "cout istifadə et";
+  }
 }
-</pre>
-</div>
 
-<div class="card">
-<h2>🚀 Nə edə bilərsən?</h2>
-<ul>
-<li>Oyun engine</li>
-<li>Sistem proqramları</li>
-<li>Yüksək performanslı app</li>
-</ul>
-</div>
-
-<a href="index.html">⬅ Geri</a>
+</script>
 
 </body>
 </html>
