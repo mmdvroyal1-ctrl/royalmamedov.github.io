@@ -2,174 +2,176 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>HTML Kitab - CodeLab</title>
+<title>HTML Ultimate Kitab - CodeLab</title>
 
 <style>
 body{
+  font-family:Poppins,sans-serif;
   background:#020617;
   color:white;
-  font-family:Arial;
   padding:20px;
-  line-height:1.8;
 }
-h1,h2{
-  color:#22c55e;
-}
+
 .card{
-  background:#1e293b;
-  padding:20px;
+  background:#0f172a;
+  padding:25px;
   border-radius:15px;
   margin-bottom:20px;
 }
+
 pre{
   background:black;
-  color:lime;
   padding:15px;
   border-radius:10px;
   overflow:auto;
+  color:#22c55e;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#22c55e;
+  cursor:pointer;
+  margin-bottom:15px;
 }
 </style>
 </head>
+
 <body>
 
-<h1>📘 HTML TAM PRO KİTAB</h1>
+<button onclick="location.href='index.html'">⬅️ Geri qayıt</button>
 
 <div class="card">
-<h2>📜 HTML nədir?</h2>
+<h1>📄 HTML ULTIMATE KİTAB</h1>
+
+<h2>📌 1. HTML nədir?</h2>
 <p>
-HTML (HyperText Markup Language) veb saytların strukturunu qurmaq üçün istifadə olunan əsas dildir.
-HTML olmadan heç bir sayt mövcud ola bilməz.
+HTML (HyperText Markup Language) veb saytların skeletidir.
+Brauzerə nə göstərilməli olduğunu bildirir.
 </p>
-</div>
 
-<div class="card">
-<h2>👨‍💻 Kim yaradıb?</h2>
+<h2>📌 2. HTML necə işləyir?</h2>
 <p>
-HTML 1991-ci ildə Tim Berners-Lee tərəfindən yaradılmışdır.
+Brauzer HTML faylı oxuyur və onu vizual səhifəyə çevirir.
 </p>
-</div>
 
-<div class="card">
-<h2>🎯 Məqsədi</h2>
-<p>
-İnternetdə məlumat paylaşmaq və səhifələri strukturlaşdırmaq.
-</p>
-</div>
-
-<div class="card">
-<h2>🧱 HTML əsas struktur</h2>
+<h2>📌 3. HTML sənəd strukturu</h2>
 <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Sayt&lt;/title&gt;
-&lt;/head&gt;
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sayt</title>
+</head>
 
-&lt;body&gt;
-&lt;h1&gt;Salam&lt;/h1&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
+<body>
+<h1>Salam Dünya</h1>
+</body>
+</html>
 </pre>
-</div>
 
-<div class="card">
-<h2>📦 Əsas taglar</h2>
-<pre>
-&lt;h1&gt;Başlıq&lt;/h1&gt;
-&lt;p&gt;Paraqraf&lt;/p&gt;
-&lt;a href="#"&gt;Link&lt;/a&gt;
-&lt;img src="img.jpg"&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>📝 Formlar</h2>
-<pre>
-&lt;form&gt;
-&lt;input type="text" placeholder="Ad"&gt;
-&lt;input type="password"&gt;
-&lt;button&gt;Göndər&lt;/button&gt;
-&lt;/form&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>📋 Siyahılar</h2>
-<pre>
-&lt;ul&gt;
-&lt;li&gt;Item 1&lt;/li&gt;
-&lt;li&gt;Item 2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;/ol&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>📊 Cədvəllər</h2>
-<pre>
-&lt;table&gt;
-&lt;tr&gt;
-&lt;th&gt;Ad&lt;/th&gt;
-&lt;th&gt;Yaş&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Royal&lt;/td&gt;
-&lt;td&gt;20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>🎥 Media</h2>
-<pre>
-&lt;img src="img.jpg"&gt;
-
-&lt;video controls&gt;
-&lt;source src="video.mp4"&gt;
-&lt;/video&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>🧠 Semantic HTML</h2>
-<pre>
-&lt;header&gt;&lt;/header&gt;
-&lt;nav&gt;&lt;/nav&gt;
-&lt;main&gt;&lt;/main&gt;
-&lt;section&gt;&lt;/section&gt;
-&lt;footer&gt;&lt;/footer&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>🚀 Real layihə nümunə</h2>
-<pre>
-&lt;header&gt;
-&lt;h1&gt;CodeLab&lt;/h1&gt;
-&lt;/header&gt;
-
-&lt;section&gt;
-&lt;p&gt;Öyrən və inkişaf et&lt;/p&gt;
-&lt;/section&gt;
-</pre>
-</div>
-
-<div class="card">
-<h2>💡 Məsləhətlər</h2>
+<h2>📌 4. Əsas Taglər</h2>
 <ul>
-<li>Həmişə semantic tag istifadə et</li>
-<li>Sadə yaz</li>
-<li>Strukturu düzgün qur</li>
+<li>&lt;h1&gt; → başlıq</li>
+<li>&lt;p&gt; → mətn</li>
+<li>&lt;a&gt; → link</li>
+<li>&lt;img&gt; → şəkil</li>
+<li>&lt;div&gt; → container</li>
+<li>&lt;span&gt; → inline element</li>
 </ul>
-</div>
 
-<a href="index.html">⬅ Geri</a>
+<h2>📌 5. Attribute nədir?</h2>
+<p>Taglərə əlavə məlumat verir</p>
+
+<pre>
+<a href="https://google.com">Link</a>
+</pre>
+
+<h2>📌 6. Linklər</h2>
+<pre>
+<a href="https://youtube.com">YouTube</a>
+</pre>
+
+<h2>📌 7. Şəkillər</h2>
+<pre>
+<img src="img.jpg" width="200">
+</pre>
+
+<h2>📌 8. Siyahılar</h2>
+<pre>
+<ul>
+<li>Bir</li>
+<li>İki</li>
+</ul>
+
+<ol>
+<li>1</li>
+<li>2</li>
+</ol>
+</pre>
+
+<h2>📌 9. Cədvəllər</h2>
+<pre>
+<table border="1">
+<tr><th>Ad</th><th>Yaş</th></tr>
+<tr><td>Ali</td><td>20</td></tr>
+</table>
+</pre>
+
+<h2>📌 10. Formlar</h2>
+<pre>
+<input type="text">
+<input type="password">
+<button>Göndər</button>
+</pre>
+
+<h2>📌 11. Semantic HTML</h2>
+<pre>
+<header></header>
+<nav></nav>
+<section></section>
+<footer></footer>
+</pre>
+
+<h2>📌 12. Video & Audio</h2>
+<pre>
+<video controls src="video.mp4"></video>
+<audio controls src="audio.mp3"></audio>
+</pre>
+
+<h2>📌 13. Iframe</h2>
+<pre>
+<iframe src="https://example.com"></iframe>
+</pre>
+
+<h2>📌 14. Best Practice</h2>
+<ul>
+<li>Sadə və təmiz kod yaz</li>
+<li>Semantic istifadə et</li>
+<li>CSS ilə ayır</li>
+</ul>
+
+<h2>📌 15. Real Project</h2>
+<pre>
+<h1>Portfolio</h1>
+<p>Haqqımda</p>
+<a href="#">Əlaqə</a>
+</pre>
+
+<h2>🎯 Practice Tapşırıqları</h2>
+<ul>
+<li>Bio səhifə yarat</li>
+<li>Şəkilli səhifə qur</li>
+<li>Form hazırla</li>
+</ul>
+
+<h2>🚀 Nəticə</h2>
+<p>
+HTML öyrəndin → artıq saytın skeletini qura bilərsən.
+Növbəti addım CSS-dir.
+</p>
+
+</div>
 
 </body>
 </html>
