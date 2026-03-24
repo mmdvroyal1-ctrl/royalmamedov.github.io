@@ -2,211 +2,186 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>HTML Ultimate Kitab - CodeLab</title>
+<title>HTML Ultimate - CodeLab</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-  background:linear-gradient(135deg,#020617,#020617,#0f172a,#020617);
+  background:linear-gradient(135deg,#020617,#020617,#0f172a);
   color:white;
   padding:20px;
+  position:relative;
 }
 
-/* BACKGROUND EFFECT */
-body::before{
-  content:"";
-  position:fixed;
-  width:300px;
-  height:300px;
-  background:#22c55e;
-  filter:blur(150px);
-  top:0;
-  left:0;
-  opacity:0.2;
-}
-
+/* 🔥 FIX: overlay klik bloklamasın */
+body::before,
 body::after{
   content:"";
   position:fixed;
-  width:300px;
-  height:300px;
-  background:#0ea5e9;
+  width:300px;height:300px;
   filter:blur(150px);
-  bottom:0;
-  right:0;
-  opacity:0.2;
+  opacity:.2;
+  pointer-events:none; /* ✅ ƏN VACİB FIX */
+}
+
+body::before{
+  background:#22c55e;
+  top:0;left:0;
+}
+
+body::after{
+  background:#0ea5e9;
+  bottom:0;right:0;
+}
+
+/* BACK BUTTON */
+.back{
+  padding:10px 15px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-bottom:20px;
+  position:relative;
+  z-index:10; /* ✅ Üstə çıxar */
 }
 
 /* CARD */
 .card{
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(25px);
-  padding:25px;
+  backdrop-filter:blur(20px);
+  padding:20px;
   border-radius:20px;
-  margin-bottom:20px;
+  margin-bottom:15px;
   border:1px solid rgba(255,255,255,0.1);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:scale(1.02);
 }
 
 /* TITLE */
 h1{
   color:#22c55e;
-  text-shadow:0 0 10px #22c55e;
+  margin-bottom:15px;
 }
 
-/* SUB TITLE */
-h2{
-  margin-top:20px;
-  color:#4ade80;
+/* ACCORDION */
+.section{
+  cursor:pointer;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.content{
+  display:none;
+  margin-top:10px;
 }
 
 /* CODE */
 pre{
   background:#000;
-  padding:15px;
+  padding:10px;
   border-radius:10px;
-  overflow:auto;
   color:#22c55e;
-  margin-top:10px;
+  overflow:auto;
 }
 
 /* BUTTON */
 button{
-  padding:10px 15px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(45deg,#22c55e,#4ade80);
-  cursor:pointer;
-  margin-bottom:15px;
-  font-weight:bold;
-}
-
-/* FORM */
-input{
   padding:10px;
-  border-radius:10px;
   border:none;
-  margin:5px 0;
-  width:100%;
+  border-radius:10px;
+  margin-top:10px;
+  cursor:pointer;
 }
 
-/* IMAGE */
-img{
+/* INPUT */
+input,textarea{
   width:100%;
-  border-radius:15px;
-  margin-top:10px;
+  padding:10px;
+  margin-top:5px;
+  border:none;
+  border-radius:10px;
 }
 
-/* VIDEO */
-iframe{
+/* MEDIA */
+iframe,img{
   width:100%;
-  height:300px;
+  border-radius:10px;
   margin-top:10px;
-  border-radius:15px;
-}
-
-/* LIST */
-ul{
-  margin-top:10px;
-  padding-left:20px;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="location.href='index.html'">⬅️ Geri qayıt</button>
+<button class="back" onclick="goBack()">⬅️ Geri qayıt</button>
 
 <div class="card">
 
-<h1>📄 HTML ULTIMATE KİTAB</h1>
+<h1>🔥 HTML ULTIMATE</h1>
 
-<h2>📌 HTML nədir?</h2>
-<p>HTML saytın skeletidir. Bütün saytlar HTML ilə başlayır.</p>
+<div class="section" onclick="toggle(this)">📌 HTML nədir?</div>
+<div class="content"><p>HTML saytın skeletidir.</p></div>
 
-<h2>📌 HTML strukturu</h2>
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Sayt&lt;/title&gt;
-&lt;/head&gt;
+<div class="section" onclick="toggle(this)">📌 Struktur</div>
+<div class="content">
+<pre id="c1">&lt;h1&gt;Salam&lt;/h1&gt;</pre>
+<button onclick="copy('c1')">Copy</button>
+</div>
 
-&lt;body&gt;
-&lt;h1&gt;Salam&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<h2>📌 Attribute nədir?</h2>
-<p>Attribute tag-ə əlavə məlumat verir.</p>
-
-<pre>
-&lt;a href="https://youtube.com"&gt;Link&lt;/a&gt;
-</pre>
-
-<h2>📌 Block vs Inline</h2>
-<ul>
-<li>Block → div, p, h1</li>
-<li>Inline → span, a</li>
-</ul>
-
-<h2>📌 Şəkil</h2>
-<img src="https://picsum.photos/600/300">
-
-<h2>📌 Video dərs</h2>
+<div class="section" onclick="toggle(this)">📌 Video</div>
+<div class="content">
 <iframe src="https://www.youtube.com/embed/UB1O30fR-EE"></iframe>
-
-<h2>📌 Siyahılar</h2>
-<pre>
-&lt;ul&gt;
-&lt;li&gt;HTML&lt;/li&gt;
-&lt;li&gt;CSS&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h2>📌 Formlar</h2>
-
-<div class="card">
-<input placeholder="Ad">
-<input placeholder="Email">
-<button>Göndər</button>
 </div>
 
-<h2>📌 Semantic HTML</h2>
-
-<div class="card">
-<p><b>&lt;header&gt;</b> → Başlıq hissə</p>
-<p><b>&lt;nav&gt;</b> → Menyu</p>
-<p><b>&lt;section&gt;</b> → Bölmə</p>
-<p><b>&lt;footer&gt;</b> → Alt hissə</p>
+<div class="section" onclick="toggle(this)">💻 Test</div>
+<div class="content">
+<textarea id="editor">&lt;h1&gt;Salam&lt;/h1&gt;</textarea>
+<button onclick="run()">Run</button>
+<iframe id="result"></iframe>
 </div>
 
-<h2>📌 SEO nədir?</h2>
-<p>Google-da çıxmaq üçün istifadə olunur.</p>
-
-<h2>📌 Meta taglər</h2>
-<pre>
-&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport"&gt;
-</pre>
-
-<h2>🚀 Nəticə</h2>
-<p>Artıq HTML-i yaxşı bilirsən 🔥</p>
-
 </div>
+
+<script>
+
+/* ✅ BACK FIX */
+function goBack(){
+  try{
+    if(history.length > 1){
+      history.back();
+    }else{
+      window.location.href="index.html";
+    }
+  }catch(e){
+    window.location.href="index.html";
+  }
+}
+
+/* ACCORDION */
+function toggle(el){
+  let c = el.nextElementSibling;
+  c.style.display = c.style.display=="block"?"none":"block";
+}
+
+/* COPY */
+function copy(id){
+  navigator.clipboard.writeText(
+    document.getElementById(id).innerText
+  );
+  alert("Kopyalandı!");
+}
+
+/* RUN */
+function run(){
+  document.getElementById("result").srcdoc =
+    document.getElementById("editor").value;
+}
+
+</script>
 
 </body>
 </html>
