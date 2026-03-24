@@ -2,7 +2,7 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>CodeLab</title>
+<title>CodeLab PRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -15,20 +15,51 @@
 body{
   display:flex;
   height:100vh;
-  background:linear-gradient(135deg,#020617,#0f172a,#020617);
+  background:radial-gradient(circle at top left,#020617,#0f172a,#020617);
   color:white;
+  overflow:hidden;
 }
 
+/* BACKGROUND GLOW */
+body::before, body::after{
+  content:"";
+  position:fixed;
+  width:400px;height:400px;
+  filter:blur(180px);
+  opacity:.3;
+  pointer-events:none;
+}
+
+body::before{
+  background:#22c55e;
+  top:-100px;left:-100px;
+}
+
+body::after{
+  background:#0ea5e9;
+  bottom:-100px;right:-100px;
+}
+
+/* SIDEBAR */
 .sidebar{
-  width:250px;
+  width:260px;
   padding:20px;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
   background:rgba(255,255,255,0.05);
   border-right:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{font-size:22px;font-weight:700;color:#22c55e;}
-.sub{font-size:12px;opacity:0.5;margin-bottom:20px;}
+.logo{
+  font-size:24px;
+  font-weight:700;
+  color:#22c55e;
+}
+
+.sub{
+  font-size:12px;
+  opacity:0.5;
+  margin-bottom:20px;
+}
 
 .sidebar a{
   display:block;
@@ -42,47 +73,78 @@ body{
 
 .sidebar a:hover{
   background:rgba(34,197,94,0.2);
-  transform:translateX(5px);
+  transform:translateX(6px);
 }
 
-.content{flex:1;padding:30px;}
-
-.card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(15px);
-  padding:20px;
-  border-radius:20px;
-  margin-bottom:20px;
+/* CONTENT */
+.content{
+  flex:1;
+  padding:30px;
+  overflow:auto;
 }
 
-button{
-  padding:10px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-  background:#22c55e;
-}
-
-.logout{background:#ef4444;}
-
+/* TITLE */
 .glow{
   color:#22c55e;
-  text-shadow:0 0 10px #22c55e;
+  text-shadow:0 0 15px #22c55e;
 }
 
+/* BUTTON */
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.logout{
+  background:#ef4444;
+  color:white;
+}
+
+.logout:hover{
+  transform:scale(1.05);
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  animation:fade 0.8s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* CHAT */
 .chat{
   height:260px;
   overflow:auto;
-  background:rgba(0,0,0,0.3);
+  background:rgba(0,0,0,0.4);
   padding:10px;
   border-radius:10px;
   margin-bottom:10px;
 }
 
-.user{color:#4ade80;}
-.bot{color:white;}
+.user{
+  color:#4ade80;
+  margin:5px 0;
+}
 
+.bot{
+  color:white;
+  margin:5px 0;
+}
+
+/* INPUT */
 input{
   width:70%;
   padding:10px;
@@ -128,7 +190,7 @@ iframe{
 </div>
 
 <div class="card">
-<h2>🤖 CodeLab PRO AI</h2>
+<h2>🤖 CodeLab AI PRO</h2>
 
 <div id="chat" class="chat"></div>
 
@@ -152,7 +214,6 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 let username="";
-let memory=JSON.parse(localStorage.getItem("chatMemory"))||[];
 
 // LOGIN
 setTimeout(()=>{
@@ -175,18 +236,12 @@ document.getElementById("aiInput").addEventListener("keypress",e=>{
   if(e.key==="Enter") askAI();
 });
 
-// LOAD CHAT
-window.onload=()=>{
-  let chat=document.getElementById("chat");
-  memory.forEach(m=>chat.innerHTML+=m);
-};
-
 // RUN CODE
 function runCode(code){
   document.getElementById("output").srcdoc=code;
 }
 
-// AI
+// AI (NO MEMORY ❌)
 function askAI(){
   let input=document.getElementById("aiInput");
   let chat=document.getElementById("chat");
@@ -196,73 +251,40 @@ function askAI(){
 
   let lower=msg.toLowerCase();
 
-  let userMsg=`<div class="user">🧑: ${msg}</div>`;
-  chat.innerHTML+=userMsg;
-  memory.push(userMsg);
+  chat.innerHTML+=`<div class="user">🧑: ${msg}</div>`;
 
   let reply="";
   let code="";
 
-  // CHAT
   if(/salam|hello|hi/.test(lower)){
-    reply="Salam "+username+" 👋 Necəsən?";
+    reply="Salam "+username+" 👋";
   }
-
   else if(lower.includes("necəsən")){
-    reply="Əlayam 😎 sən necəsən?";
+    reply="Yaxşıyam 😎 sən?";
   }
-
-  // CODE GENERATION
   else if(lower.includes("button")){
     code="<button style='padding:10px;background:green;color:white'>Klik</button>";
     reply="Button hazırdır 👇";
   }
-
   else if(lower.includes("input")){
     code="<input placeholder='Yaz...' style='padding:10px'>";
     reply="Input hazırdır 👇";
   }
-
-  else if(lower.includes("sayt qur")){
-    code="<h1 style='color:red'>Salam Dünya</h1>";
-    reply="Mini sayt quruldu 👇";
-  }
-
   else if(lower.includes("html")){
-    code="<h2>HTML işləyir</h2>";
+    code="<h2 style='color:red'>HTML işləyir</h2>";
     reply="HTML nümunə 👇";
   }
-
   else if(lower.includes("css")){
-    code="<h1 style='color:blue'>CSS işləyir</h1>";
-    reply="CSS tətbiq edildi 👇";
+    code="<h2 style='color:blue'>CSS işləyir</h2>";
+    reply="CSS nümunə 👇";
   }
-
-  // DEBUG
-  else if(lower.includes("səhv")){
-    reply="Kodu göndər, analiz edib düzəldim 🔧";
-  }
-
-  // MEMORY
-  else if(lower.includes("ne demişdim")){
-    reply=memory.length>2?memory[memory.length-2]:"Yadda heç nə yoxdur";
-  }
-
   else{
-    reply="Daha konkret yaz 👍 məsələn: 'button yarat'";
+    reply="Daha konkret yaz 👍";
   }
-
-  let botMsg=`<div class="bot">🤖: ${reply}</div>`;
 
   setTimeout(()=>{
-    chat.innerHTML+=botMsg;
-    memory.push(botMsg);
-
-    if(code){
-      runCode(code);
-    }
-
-    localStorage.setItem("chatMemory",JSON.stringify(memory));
+    chat.innerHTML+=`<div class="bot">🤖: ${reply}</div>`;
+    if(code) runCode(code);
     chat.scrollTop=chat.scrollHeight;
   },300);
 
