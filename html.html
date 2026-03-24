@@ -4,36 +4,74 @@
 <meta charset="UTF-8">
 <title>HTML Ultimate Kitab - CodeLab</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
 body{
-  font-family:Poppins,sans-serif;
-  background:#020617;
+  background:linear-gradient(135deg,#020617,#0f172a,#020617);
   color:white;
   padding:20px;
 }
 
+/* PRO CARD */
 .card{
-  background:#0f172a;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
   padding:25px;
-  border-radius:15px;
+  border-radius:20px;
   margin-bottom:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
 }
 
+.card:hover{
+  transform:scale(1.02);
+}
+
+/* TITLE */
+h1{
+  color:#22c55e;
+  text-shadow:0 0 10px #22c55e;
+}
+
+/* CODE BLOCK */
 pre{
-  background:black;
+  background:#000;
   padding:15px;
   border-radius:10px;
   overflow:auto;
   color:#22c55e;
+  margin-top:10px;
 }
 
+/* BUTTON */
 button{
   padding:10px 15px;
   border:none;
-  border-radius:10px;
-  background:#22c55e;
+  border-radius:12px;
+  background:linear-gradient(45deg,#22c55e,#4ade80);
   cursor:pointer;
   margin-bottom:15px;
+  font-weight:bold;
+}
+
+/* IMAGE */
+img{
+  border-radius:15px;
+  margin-top:10px;
+}
+
+/* VIDEO */
+iframe{
+  margin-top:10px;
+  border-radius:15px;
 }
 </style>
 </head>
@@ -48,7 +86,13 @@ button{
 
 <h2>📌 HTML nədir?</h2>
 <p>
-HTML veb saytların skeletidir. Saytda gördüyün hər şey HTML ilə qurulur.
+HTML (HyperText Markup Language) veb saytların strukturunu yaradır.
+Brauzer bu kodu oxuyaraq vizual səhifəyə çevirir.
+</p>
+
+<h2>📌 HTML necə işləyir?</h2>
+<p>
+Brauzer HTML faylı oxuyur və hər tag-i analiz edib ekranda göstərir.
 </p>
 
 <h2>📌 HTML strukturu</h2>
@@ -68,58 +112,83 @@ HTML veb saytların skeletidir. Saytda gördüyün hər şey HTML ilə qurulur.
 
 <h2>📌 Attribute nədir?</h2>
 <p>
-Attribute tag-ə əlavə məlumat verir.
-Tag deyir nədir, attribute deyir necə olsun.
+Attribute tag-ə əlavə məlumat verir. Tag nə olduğunu deyir, attribute necə olacağını.
 </p>
 
 <pre>
-<a href="https://youtube.com">YouTube</a>
+<a href="https://youtube.com" target="_blank">YouTube</a>
 </pre>
 
-<p>Burada <b>href</b> atributudur və linkin hara gedəcəyini göstərir.</p>
+<h2>📌 Block vs Inline</h2>
+<ul>
+<li>Block → div, p, h1 (yeni sətir)</li>
+<li>Inline → span, a (yan-yana)</li>
+</ul>
 
 <h2>📌 Şəkil (Real Demo)</h2>
+<img src="https://picsum.photos/500/250">
 
-<img src="https://picsum.photos/400/250" alt="random şəkil">
-
-<p>Bu internetdən gələn real şəkildir ✔</p>
-
-<h2>📌 Video dərs (HTML öyrən)</h2>
-
-<p>HTML-i sıfırdan öyrənmək üçün videoya bax 👇</p>
-
-<iframe width="400" height="250"
-src="https://www.youtube.com/embed/UB1O30fR-EE"
-title="HTML Tutorial"
-frameborder="0"
-allowfullscreen>
+<h2>📌 HTML Video dərs</h2>
+<iframe width="450" height="250"
+src="https://www.youtube.com/embed/UB1O30fR-EE">
 </iframe>
 
-<h2>📌 Əsas taglər</h2>
+<h2>📌 Siyahılar</h2>
+<pre>
 <ul>
-<li>&lt;h1&gt; → başlıq</li>
-<li>&lt;p&gt; → mətn</li>
-<li>&lt;a&gt; → link</li>
-<li>&lt;img&gt; → şəkil</li>
-<li>&lt;div&gt; → bölmə</li>
+<li>HTML</li>
+<li>CSS</li>
 </ul>
+
+<ol>
+<li>1</li>
+<li>2</li>
+</ol>
+</pre>
 
 <h2>📌 Formlar</h2>
 <pre>
-<input type="text" placeholder="Adını yaz">
+<input type="text" placeholder="Ad">
+<input type="email" placeholder="Email">
 <button>Göndər</button>
 </pre>
 
+<h2>📌 Semantic HTML</h2>
+<pre>
+<header></header>
+<nav></nav>
+<section></section>
+<footer></footer>
+</pre>
+
+<h2>📌 SEO nədir?</h2>
+<p>
+SEO saytın Google-da çıxmasıdır. HTML-də düzgün tag istifadəsi buna kömək edir.
+</p>
+
+<h2>📌 Meta taglər</h2>
+<pre>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+</pre>
+
+<h2>📌 Best Practice</h2>
+<ul>
+<li>Təmiz kod yaz</li>
+<li>Semantic istifadə et</li>
+<li>CSS ilə dizayn et</li>
+</ul>
+
 <h2>🎯 Practice</h2>
 <ul>
-<li>Öz bio səhifəni yarat</li>
-<li>Şəkil əlavə et</li>
-<li>Link əlavə et</li>
+<li>Portfolio yarat</li>
+<li>Form qur</li>
+<li>Şəkilli səhifə et</li>
 </ul>
 
 <h2>🚀 Nəticə</h2>
 <p>
-Artıq HTML-in əsaslarını öyrəndin. Növbəti addım CSS-dir.
+Artıq HTML-in əsaslarını professional səviyyədə bilirsən.
 </p>
 
 </div>
