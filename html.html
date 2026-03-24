@@ -15,15 +15,40 @@
 }
 
 body{
-  background:linear-gradient(135deg,#020617,#0f172a,#020617);
+  background:linear-gradient(135deg,#020617,#020617,#0f172a,#020617);
   color:white;
   padding:20px;
 }
 
-/* PRO CARD */
+/* BACKGROUND EFFECT */
+body::before{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#22c55e;
+  filter:blur(150px);
+  top:0;
+  left:0;
+  opacity:0.2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#0ea5e9;
+  filter:blur(150px);
+  bottom:0;
+  right:0;
+  opacity:0.2;
+}
+
+/* CARD */
 .card{
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
   padding:25px;
   border-radius:20px;
   margin-bottom:20px;
@@ -41,7 +66,13 @@ h1{
   text-shadow:0 0 10px #22c55e;
 }
 
-/* CODE BLOCK */
+/* SUB TITLE */
+h2{
+  margin-top:20px;
+  color:#4ade80;
+}
+
+/* CODE */
 pre{
   background:#000;
   padding:15px;
@@ -62,16 +93,34 @@ button{
   font-weight:bold;
 }
 
+/* FORM */
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin:5px 0;
+  width:100%;
+}
+
 /* IMAGE */
 img{
+  width:100%;
   border-radius:15px;
   margin-top:10px;
 }
 
 /* VIDEO */
 iframe{
+  width:100%;
+  height:300px;
   margin-top:10px;
   border-radius:15px;
+}
+
+/* LIST */
+ul{
+  margin-top:10px;
+  padding-left:20px;
 }
 </style>
 </head>
@@ -85,111 +134,77 @@ iframe{
 <h1>📄 HTML ULTIMATE KİTAB</h1>
 
 <h2>📌 HTML nədir?</h2>
-<p>
-HTML (HyperText Markup Language) veb saytların strukturunu yaradır.
-Brauzer bu kodu oxuyaraq vizual səhifəyə çevirir.
-</p>
-
-<h2>📌 HTML necə işləyir?</h2>
-<p>
-Brauzer HTML faylı oxuyur və hər tag-i analiz edib ekranda göstərir.
-</p>
+<p>HTML saytın skeletidir. Bütün saytlar HTML ilə başlayır.</p>
 
 <h2>📌 HTML strukturu</h2>
 <pre>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Sayt</title>
-</head>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Sayt&lt;/title&gt;
+&lt;/head&gt;
 
-<body>
-<h1>Salam Dünya</h1>
-<p>Bu mənim saytım</p>
-</body>
-</html>
+&lt;body&gt;
+&lt;h1&gt;Salam&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre>
 
 <h2>📌 Attribute nədir?</h2>
-<p>
-Attribute tag-ə əlavə məlumat verir. Tag nə olduğunu deyir, attribute necə olacağını.
-</p>
+<p>Attribute tag-ə əlavə məlumat verir.</p>
 
 <pre>
-<a href="https://youtube.com" target="_blank">YouTube</a>
+&lt;a href="https://youtube.com"&gt;Link&lt;/a&gt;
 </pre>
 
 <h2>📌 Block vs Inline</h2>
 <ul>
-<li>Block → div, p, h1 (yeni sətir)</li>
-<li>Inline → span, a (yan-yana)</li>
+<li>Block → div, p, h1</li>
+<li>Inline → span, a</li>
 </ul>
 
-<h2>📌 Şəkil (Real Demo)</h2>
-<img src="https://picsum.photos/500/250">
+<h2>📌 Şəkil</h2>
+<img src="https://picsum.photos/600/300">
 
-<h2>📌 HTML Video dərs</h2>
-<iframe width="450" height="250"
-src="https://www.youtube.com/embed/UB1O30fR-EE">
-</iframe>
+<h2>📌 Video dərs</h2>
+<iframe src="https://www.youtube.com/embed/UB1O30fR-EE"></iframe>
 
 <h2>📌 Siyahılar</h2>
 <pre>
-<ul>
-<li>HTML</li>
-<li>CSS</li>
-</ul>
-
-<ol>
-<li>1</li>
-<li>2</li>
-</ol>
+&lt;ul&gt;
+&lt;li&gt;HTML&lt;/li&gt;
+&lt;li&gt;CSS&lt;/li&gt;
+&lt;/ul&gt;
 </pre>
 
 <h2>📌 Formlar</h2>
-<pre>
-<input type="text" placeholder="Ad">
-<input type="email" placeholder="Email">
+
+<div class="card">
+<input placeholder="Ad">
+<input placeholder="Email">
 <button>Göndər</button>
-</pre>
+</div>
 
 <h2>📌 Semantic HTML</h2>
-<pre>
-<header></header>
-<nav></nav>
-<section></section>
-<footer></footer>
-</pre>
+
+<div class="card">
+<p><b>&lt;header&gt;</b> → Başlıq hissə</p>
+<p><b>&lt;nav&gt;</b> → Menyu</p>
+<p><b>&lt;section&gt;</b> → Bölmə</p>
+<p><b>&lt;footer&gt;</b> → Alt hissə</p>
+</div>
 
 <h2>📌 SEO nədir?</h2>
-<p>
-SEO saytın Google-da çıxmasıdır. HTML-də düzgün tag istifadəsi buna kömək edir.
-</p>
+<p>Google-da çıxmaq üçün istifadə olunur.</p>
 
 <h2>📌 Meta taglər</h2>
 <pre>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport"&gt;
 </pre>
 
-<h2>📌 Best Practice</h2>
-<ul>
-<li>Təmiz kod yaz</li>
-<li>Semantic istifadə et</li>
-<li>CSS ilə dizayn et</li>
-</ul>
-
-<h2>🎯 Practice</h2>
-<ul>
-<li>Portfolio yarat</li>
-<li>Form qur</li>
-<li>Şəkilli səhifə et</li>
-</ul>
-
 <h2>🚀 Nəticə</h2>
-<p>
-Artıq HTML-in əsaslarını professional səviyyədə bilirsən.
-</p>
+<p>Artıq HTML-i yaxşı bilirsən 🔥</p>
 
 </div>
 
