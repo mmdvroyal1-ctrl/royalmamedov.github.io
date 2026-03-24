@@ -2,133 +2,248 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>CSS Kitab - CodeLab</title>
+<title>CSS Ultimate - CodeLab</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
 body{
-  background:#020617;
+  background:linear-gradient(135deg,#020617,#020617,#0f172a);
   color:white;
-  font-family:Arial;
   padding:20px;
-  line-height:1.8;
 }
-h1,h2{
-  color:#22c55e;
+
+/* BACKGROUND EFFECT FIX */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;height:300px;
+  filter:blur(150px);
+  opacity:.2;
+  pointer-events:none;
 }
-.card{
-  background:#1e293b;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:20px;
-}
-pre{
-  background:black;
-  color:lime;
-  padding:15px;
+
+body::before{background:#22c55e;top:0;left:0;}
+body::after{background:#0ea5e9;bottom:0;right:0;}
+
+/* BACK BUTTON */
+.back{
+  padding:10px 15px;
+  background:#22c55e;
+  border:none;
   border-radius:10px;
+  cursor:pointer;
+  margin-bottom:20px;
+  z-index:10;
+  position:relative;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:15px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* TITLE */
+h1{
+  color:#22c55e;
+  margin-bottom:15px;
+}
+
+/* ACCORDION */
+.section{
+  cursor:pointer;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.content{
+  display:none;
+  margin-top:10px;
+}
+
+/* CODE */
+pre{
+  background:#000;
+  padding:10px;
+  border-radius:10px;
+  color:#22c55e;
   overflow:auto;
+}
+
+/* BUTTON */
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+/* INPUT */
+textarea{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+  border:none;
+}
+
+/* PREVIEW BOX */
+.preview{
+  margin-top:10px;
+  padding:20px;
+  border-radius:10px;
+  background:white;
+  color:black;
+}
+
+/* MEDIA */
+iframe,img{
+  width:100%;
+  border-radius:10px;
+  margin-top:10px;
 }
 </style>
 </head>
+
 <body>
 
-<h1>🎨 CSS TAM PRO KİTAB</h1>
+<button class="back" onclick="goBack()">⬅️ Geri qayıt</button>
 
 <div class="card">
-<h2>📜 CSS nədir?</h2>
-<p>
-CSS (Cascading Style Sheets) veb saytların dizaynını idarə edən dildir.
-</p>
+
+<h1>🎨 CSS ULTIMATE</h1>
+
+<!-- CSS NƏDİR -->
+<div class="section" onclick="toggle(this)">📌 CSS nədir?</div>
+<div class="content">
+<p>CSS dizayn üçündür. HTML-i gözəl edir 🎨</p>
 </div>
 
-<div class="card">
-<h2>👨‍💻 Kim yaradıb?</h2>
-<p>
-CSS 1996-cı ildə Håkon Wium Lie tərəfindən yaradılmışdır.
-</p>
+<!-- SELECTOR -->
+<div class="section" onclick="toggle(this)">📌 Selector</div>
+<div class="content">
+<pre id="c1">h1 {
+  color: red;
+}</pre>
+<button onclick="copy('c1')">Copy</button>
 </div>
 
-<div class="card">
-<h2>🎯 Məqsəd</h2>
-<p>
-Saytın görünüşünü gözəlləşdirmək və dizayn vermək.
-</p>
+<!-- COLOR -->
+<div class="section" onclick="toggle(this)">📌 Rənglər</div>
+<div class="content">
+<pre id="c2">color: red;
+color: #ff0000;
+color: rgb(255,0,0);</pre>
+<button onclick="copy('c2')">Copy</button>
 </div>
 
-<div class="card">
-<h2>🧱 Sintaksis</h2>
-<pre>
-selector {
-  property: value;
-}
-</pre>
-</div>
-
-<div class="card">
-<h2>🎨 Rənglər</h2>
-<pre>
-color: red;
-background: black;
-</pre>
-</div>
-
-<div class="card">
-<h2>📏 Ölçülər</h2>
-<pre>
-width:100px;
-height:200px;
-</pre>
-</div>
-
-<div class="card">
-<h2>📦 Box Model</h2>
-<pre>
-margin:10px;
-padding:10px;
-border:1px solid white;
-</pre>
-</div>
-
-<div class="card">
-<h2>📐 Flexbox</h2>
-<pre>
-display:flex;
-justify-content:center;
-align-items:center;
-</pre>
-</div>
-
-<div class="card">
-<h2>📱 Responsive</h2>
-<pre>
-@media(max-width:600px){
-  body{background:red;}
-}
-</pre>
-</div>
-
-<div class="card">
-<h2>✨ Animasiya</h2>
-<pre>
-@keyframes glow{
- from{opacity:0;}
- to{opacity:1;}
-}
-</pre>
-</div>
-
-<div class="card">
-<h2>🚀 Real nümunə</h2>
-<pre>
-button{
-  background:#22c55e;
+<!-- BOX MODEL -->
+<div class="section" onclick="toggle(this)">📌 Box Model</div>
+<div class="content">
+<p>margin, padding, border, content</p>
+<pre id="c3">div{
+  margin:10px;
   padding:10px;
-  border-radius:10px;
-}
-</pre>
+  border:1px solid white;
+}</pre>
+<button onclick="copy('c3')">Copy</button>
 </div>
 
-<a href="index.html">⬅ Geri</a>
+<!-- FLEX -->
+<div class="section" onclick="toggle(this)">📌 Flexbox</div>
+<div class="content">
+<pre id="c4">.box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}</pre>
+<button onclick="copy('c4')">Copy</button>
+</div>
+
+<!-- ANIMATION -->
+<div class="section" onclick="toggle(this)">📌 Animasiya</div>
+<div class="content">
+<pre id="c5">@keyframes move{
+  from{transform:translateX(0);}
+  to{transform:translateX(100px);}
+}</pre>
+<button onclick="copy('c5')">Copy</button>
+</div>
+
+<!-- IMAGE -->
+<div class="section" onclick="toggle(this)">📌 Şəkil stil</div>
+<div class="content">
+<img src="https://picsum.photos/600/300">
+</div>
+
+<!-- VIDEO -->
+<div class="section" onclick="toggle(this)">📌 Video dərs</div>
+<div class="content">
+<iframe src="https://www.youtube.com/embed/yfoY53QXEnI"></iframe>
+</div>
+
+<!-- LIVE CSS -->
+<div class="section" onclick="toggle(this)">💻 CSS TEST ET</div>
+<div class="content">
+
+<textarea id="cssInput">
+color:red;
+font-size:30px;
+</textarea>
+
+<button onclick="runCSS()">Run</button>
+
+<div class="preview" id="previewBox">
+Salam CSS
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* BACK */
+function goBack(){
+  if(history.length > 1){
+    history.back();
+  }else{
+    window.location.href="index.html";
+  }
+}
+
+/* ACCORDION */
+function toggle(el){
+  let c = el.nextElementSibling;
+  c.style.display = c.style.display=="block"?"none":"block";
+}
+
+/* COPY */
+function copy(id){
+  navigator.clipboard.writeText(
+    document.getElementById(id).innerText
+  );
+  alert("Kopyalandı!");
+}
+
+/* RUN CSS */
+function runCSS(){
+  let css = document.getElementById("cssInput").value;
+  document.getElementById("previewBox").style = css;
+}
+
+</script>
 
 </body>
 </html>
